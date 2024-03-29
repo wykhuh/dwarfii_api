@@ -209,15 +209,19 @@ export class WebSocketHandler {
       console.debug("new socket created", new_socket);
 
       this.socket.onopen = () => {
-        this.is_opened = true;
+        if (this.socket) {
+          this.is_opened = true;
 
-        // Socket Binary Mode
-        this.socket.binaryType = "arraybuffer";
+          // Socket Binary Mode
+          this.socket.binaryType = "arraybuffer";
 
-        console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
+          console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
 
-        // Start on the open event
-        this.start();
+          // Start on the open event
+          this.start();
+        } else {
+          console.debug(`websocket_class : open error socket undefined`);
+        }
       };
 
       this.socket.onmessage = async (event) => {

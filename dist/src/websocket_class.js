@@ -193,12 +193,17 @@ export class WebSocketHandler {
                 this.socket = new_socket;
                 console.debug("new socket created", new_socket);
                 this.socket.onopen = () => {
-                    this.is_opened = true;
-                    // Socket Binary Mode
-                    this.socket.binaryType = "arraybuffer";
-                    console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
-                    // Start on the open event
-                    this.start();
+                    if (this.socket) {
+                        this.is_opened = true;
+                        // Socket Binary Mode
+                        this.socket.binaryType = "arraybuffer";
+                        console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
+                        // Start on the open event
+                        this.start();
+                    }
+                    else {
+                        console.debug(`websocket_class : open error socket undefined`);
+                    }
                 };
                 this.socket.onmessage = (event) => __awaiter(this, void 0, void 0, function* () {
                     console.debug("websocket_class : onmessage function...");
