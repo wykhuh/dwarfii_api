@@ -252,9 +252,12 @@ export class WebSocketHandler {
             await this.handleClose(message);
           }
           // Cleanup event handlers after disconnection
-          new_socket.onopen = null;
-          new_socket.onerror = null;
-          new_socket.onclose = null;
+          await this.cleanup();
+          if (new_socket) {
+            new_socket.onopen = null;
+            new_socket.onerror = null;
+            new_socket.onclose = null;
+          }
         };
       }
       console.debug("class instance :", this);
