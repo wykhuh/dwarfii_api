@@ -27944,55 +27944,55 @@ $root.ReqSetCpuMode = (function () {
     };
     return ReqSetCpuMode;
 })();
-$root.ReqSetHostMode = (function () {
+$root.ReqSetHostSalveMode = (function () {
     /**
-     * Properties of a ReqSetHostMode.
-     * @exports IReqSetHostMode
-     * @interface IReqSetHostMode
-     * @property {number|null} [mode] ReqSetHostMode mode
+     * Properties of a ReqSetHostSalveMode.
+     * @exports IReqSetHostSalveMode
+     * @interface IReqSetHostSalveMode
+     * @property {number|null} [mode] ReqSetHostSalveMode mode
      */
     /**
-     * Constructs a new ReqSetHostMode.
-     * @exports ReqSetHostMode
-     * @classdesc Represents a ReqSetHostMode.
-     * @implements IReqSetHostMode
+     * Constructs a new ReqSetHostSalveMode.
+     * @exports ReqSetHostSalveMode
+     * @classdesc Represents a ReqSetHostSalveMode.
+     * @implements IReqSetHostSalveMode
      * @constructor
-     * @param {IReqSetHostMode=} [properties] Properties to set
+     * @param {IReqSetHostSalveMode=} [properties] Properties to set
      */
-    function ReqSetHostMode(properties) {
+    function ReqSetHostSalveMode(properties) {
         if (properties)
             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                 if (properties[keys[i]] != null)
                     this[keys[i]] = properties[keys[i]];
     }
     /**
-     * ReqSetHostMode mode.
+     * ReqSetHostSalveMode mode.
      * @member {number} mode
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @instance
      */
-    ReqSetHostMode.prototype.mode = 0;
+    ReqSetHostSalveMode.prototype.mode = 0;
     /**
-     * Creates a new ReqSetHostMode instance using the specified properties.
+     * Creates a new ReqSetHostSalveMode instance using the specified properties.
      * @function create
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
-     * @param {IReqSetHostMode=} [properties] Properties to set
-     * @returns {ReqSetHostMode} ReqSetHostMode instance
+     * @param {IReqSetHostSalveMode=} [properties] Properties to set
+     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode instance
      */
-    ReqSetHostMode.create = function create(properties) {
-        return new ReqSetHostMode(properties);
+    ReqSetHostSalveMode.create = function create(properties) {
+        return new ReqSetHostSalveMode(properties);
     };
     /**
-     * Encodes the specified ReqSetHostMode message. Does not implicitly {@link ReqSetHostMode.verify|verify} messages.
+     * Encodes the specified ReqSetHostSalveMode message. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
      * @function encode
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
-     * @param {IReqSetHostMode} message ReqSetHostMode message or plain object to encode
+     * @param {IReqSetHostSalveMode} message ReqSetHostSalveMode message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    ReqSetHostMode.encode = function encode(message, writer) {
+    ReqSetHostSalveMode.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
         if (message.mode != null && Object.hasOwnProperty.call(message, "mode"))
@@ -28000,32 +28000,32 @@ $root.ReqSetHostMode = (function () {
         return writer;
     };
     /**
-     * Encodes the specified ReqSetHostMode message, length delimited. Does not implicitly {@link ReqSetHostMode.verify|verify} messages.
+     * Encodes the specified ReqSetHostSalveMode message, length delimited. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
      * @function encodeDelimited
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
-     * @param {IReqSetHostMode} message ReqSetHostMode message or plain object to encode
+     * @param {IReqSetHostSalveMode} message ReqSetHostSalveMode message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    ReqSetHostMode.encodeDelimited = function encodeDelimited(message, writer) {
+    ReqSetHostSalveMode.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
     };
     /**
-     * Decodes a ReqSetHostMode message from the specified reader or buffer.
+     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer.
      * @function decode
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
-     * @returns {ReqSetHostMode} ReqSetHostMode
+     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    ReqSetHostMode.decode = function decode(reader, length) {
+    ReqSetHostSalveMode.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ReqSetHostMode();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ReqSetHostSalveMode();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -28041,29 +28041,29 @@ $root.ReqSetHostMode = (function () {
         return message;
     };
     /**
-     * Decodes a ReqSetHostMode message from the specified reader or buffer, length delimited.
+     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer, length delimited.
      * @function decodeDelimited
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {ReqSetHostMode} ReqSetHostMode
+     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    ReqSetHostMode.decodeDelimited = function decodeDelimited(reader) {
+    ReqSetHostSalveMode.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
             reader = new $Reader(reader);
         return this.decode(reader, reader.uint32());
     };
     /**
-     * Verifies a ReqSetHostMode message.
+     * Verifies a ReqSetHostSalveMode message.
      * @function verify
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
      * @param {Object.<string,*>} message Plain object to verify
      * @returns {string|null} `null` if valid, otherwise the reason why it is not
      */
-    ReqSetHostMode.verify = function verify(message) {
+    ReqSetHostSalveMode.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
         if (message.mode != null && message.hasOwnProperty("mode"))
@@ -28072,31 +28072,31 @@ $root.ReqSetHostMode = (function () {
         return null;
     };
     /**
-     * Creates a ReqSetHostMode message from a plain object. Also converts values to their respective internal types.
+     * Creates a ReqSetHostSalveMode message from a plain object. Also converts values to their respective internal types.
      * @function fromObject
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
      * @param {Object.<string,*>} object Plain object
-     * @returns {ReqSetHostMode} ReqSetHostMode
+     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
      */
-    ReqSetHostMode.fromObject = function fromObject(object) {
-        if (object instanceof $root.ReqSetHostMode)
+    ReqSetHostSalveMode.fromObject = function fromObject(object) {
+        if (object instanceof $root.ReqSetHostSalveMode)
             return object;
-        var message = new $root.ReqSetHostMode();
+        var message = new $root.ReqSetHostSalveMode();
         if (object.mode != null)
             message.mode = object.mode | 0;
         return message;
     };
     /**
-     * Creates a plain object from a ReqSetHostMode message. Also converts values to other types if specified.
+     * Creates a plain object from a ReqSetHostSalveMode message. Also converts values to other types if specified.
      * @function toObject
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
-     * @param {ReqSetHostMode} message ReqSetHostMode
+     * @param {ReqSetHostSalveMode} message ReqSetHostSalveMode
      * @param {$protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
-    ReqSetHostMode.toObject = function toObject(message, options) {
+    ReqSetHostSalveMode.toObject = function toObject(message, options) {
         if (!options)
             options = {};
         var object = {};
@@ -28107,30 +28107,30 @@ $root.ReqSetHostMode = (function () {
         return object;
     };
     /**
-     * Converts this ReqSetHostMode to JSON.
+     * Converts this ReqSetHostSalveMode to JSON.
      * @function toJSON
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @instance
      * @returns {Object.<string,*>} JSON object
      */
-    ReqSetHostMode.prototype.toJSON = function toJSON() {
+    ReqSetHostSalveMode.prototype.toJSON = function toJSON() {
         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
     };
     /**
-     * Gets the default type url for ReqSetHostMode
+     * Gets the default type url for ReqSetHostSalveMode
      * @function getTypeUrl
-     * @memberof ReqSetHostMode
+     * @memberof ReqSetHostSalveMode
      * @static
      * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns {string} The default type url
      */
-    ReqSetHostMode.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    ReqSetHostSalveMode.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
         if (typeUrlPrefix === undefined) {
             typeUrlPrefix = "type.googleapis.com";
         }
-        return typeUrlPrefix + "/ReqSetHostMode";
+        return typeUrlPrefix + "/ReqSetHostSalveMode";
     };
-    return ReqSetHostMode;
+    return ReqSetHostSalveMode;
 })();
 $root.ReqStartTrack = (function () {
     /**

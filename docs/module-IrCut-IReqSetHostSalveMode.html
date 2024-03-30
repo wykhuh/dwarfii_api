@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>api_codes.js - Documentation</title>
+    <title>IReqSetHostSalveMode - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,128 +37,179 @@
 
 <div id="main">
     
-    <h1 class="page-title">api_codes.js</h1>
+    <h1 class="page-title">IReqSetHostSalveMode</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/** @module api_codes */
-/* eslint no-unused-vars: 0 */
+        <h2>
+            <span class="ancestors"><a href="module-IrCut.html">IrCut</a>~</span>
+        
+        
+            IReqSetHostSalveMode
+        
+        </h2>
+        
+    
+</header>
 
-export const DwarfIP = "192.168.88.1";
+<article>
+    
+        <div class="container-overview">
+        
+            
 
-/**
- * @param {string} IP
- * @returns {string}
- */
-export const wsURL = (IP) => `ws://${IP}:9900`;
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Properties of a ReqSetHostSalveMode.</li></ul></dd>
+    
 
-/**
- * @param {string} IP
- * @returns {string}
- */
-export const wideangleURL = (IP) => `http://${IP}:8092/secondstream`;
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="protobuf_protobuf.js.html">protobuf/protobuf.js</a>, <a href="protobuf_protobuf.js.html#line29429">line 29429</a>
+    </li></ul></dd>
+    
 
-/**
- * @param {string} IP
- * @returns {string}
- */
-export const telephotoURL = (IP) => `http://${IP}:8092/mainstream`;
+    
 
-/**
- * @param {string} IP
- * @returns {string}
- */
+    
 
-// old ip : not working anymore in V2
-//export const rawPreviewURL = (IP) => `http://${IP}:8092/rawstream`;
-export const rawPreviewURL = (IP) => `http://${IP}:8092/mainstream`;
+    
 
-/**
- * @param {string} IP
- * @returns {string}
- */
-export const firmwareVersion = (IP) => `http://${IP}:8082/firmwareVersion`;
+    
 
-/**
- * @param {string} IP
- * @returns {string}
- */
-export const getDefaultParamsConfig = (IP) =>
-  `http://${IP}:8082/getDefaultParamsConfig`;
+    
 
-// ===============
-// ===============
+    
 
-// exposition - gain
-export const modeAuto = 0;
-export const modeManual = 1;
+    
 
-// autofocus
-export const autofocusGlobal = 0;
-export const autofocusArea = 1;
+    
 
-export const exposureTelephotoModeAuto = 0;
-export const exposureWideangleModeAuto = 3;
+    
 
-// whitebalance
-export const whiteBalanceScenesIDValue = {
-  0: "incandescent lamp",
-  1: "fluorescent lamp",
-  2: "warm fluorescent lamp",
-  3: "sunlight",
-  4: "overcast sky",
-  5: "evening twilight",
-  6: "shadow",
-};
-export const whiteBalanceScenesValueID = {
-  "incandescent lamp": 0,
-  "fluorescent lamp": 1,
-  "warm fluorescent lamp": 2,
-  sunlight: 3,
-  "overcast sky": 4,
-  "evening twilight": 5,
-  shadow: 6,
-};
+    
 
-// IR
-export const IRCut = 0;
-export const IRPass = 1;
+    
 
-export const binning1x1 = 0;
-export const binning2x2 = 1;
+    
 
-export const fileFits = 0;
-export const fileTiff = 1;
+    
 
-// raw preview
-export const rawPreviewContinousSuperimpose = 0;
-export const rawPreviewSingle15 = 1;
-export const rawPreviewSingleComposite = 2;
+    
 
-// ===============
-// 5 motion control
-// ===============
+    
+</dl>
 
-export const continuous_mode = 1;
-export const pulse_mode = 2;
 
-export const speedDecelerate = 0;
-export const speedAccelerate = 1;
 
-export const anticlockwise = 0;
-export const clockwise = 1;
+    <h5 class="subsection-title">Properties:</h5>
 
-export const spinMotor = 1;
-export const pitchMotor = 2;
-</code></pre>
-        </article>
-    </section>
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">ReqSetHostSalveMode mode</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+            
+                <div class="description usertext">Properties of a ReqSetHostSalveMode.</div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -170,7 +221,7 @@ export const pitchMotor = 2;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sat Mar 30 2024 01:28:08 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sat Mar 30 2024 01:28:10 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -20,6 +20,6 @@ message ReqSetCpuMode {
     int32 mode = 1;
 }
 
-message ReqSetHostMode {
+message ReqSetHostSalveMode {
     int32 mode = 1;
 }

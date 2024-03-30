@@ -172,88 +172,102 @@ export class WebSocketHandler {
       console.error("IPDwarf is undefined. Unable to create WebSocket.");
       return false;
     }
-
     console.debug("websocket_class : running function starting...");
 
-    await sleep(10);
-    this.keep_connection = false;
+    try {
+      await sleep(10);
+      this.keep_connection = false;
 
-    if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-      console.log("Keep old Websocket opened");
-      this.keep_connection = true;
-    } else {
-      if (this.socket && this.socket.readyState !== WebSocket.OPEN) {
-        // Socket still hangs, hard close
-        console.log("Old Websocket force close");
-        this.cleanup_socket();
-        await sleep(100);
+      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+        console.log("Keep old Websocket opened");
+        this.keep_connection = true;
+      } else {
+        if (this.socket && this.socket.readyState !== WebSocket.OPEN) {
+          // Socket still hangs, hard close
+          console.log("Old Websocket force close");
+          this.cleanup_socket();
+          await sleep(100);
+        }
       }
+
+      if (this.keep_connection) {
+        // Need Stopping Ping
+        await this.wait_ping_stop();
+        // Start manually no open event
+        this.start();
+      } else {
+        // restarting
+        // verify Stopping Ping
+        await this.wait_ping_stop();
+        this.is_stopping = false;
+        this.is_opened = false;
+
+        // Create WebSocket
+        this.socket = undefined;
+        let new_socket = undefined;
+        new_socket = new WebSocket(wsURL(this.IPDwarf));
+        console.log("Launch open new Socket");
+
+        // Socket Binary Mode
+        new_socket.binaryType = "arraybuffer";
+
+        new_socket.onopen = () => {
+          if (new_socket) {
+            this.socket = new_socket;
+            console.debug("new socket created", new_socket);
+            this.is_opened = true;
+
+            console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
+            console.debug("class instance open:", this);
+
+            // Start on the open event
+            this.start();
+          } else {
+            console.debug(`websocket_class : open error socket undefined`);
+          }
+        };
+
+        new_socket.onmessage = async (event) => {
+          console.debug("websocket_class : onmessage function...");
+          while (this.is_sending || this.is_buffered) {
+            await sleep(10);
+          }
+          console.debug("websocket_class : onmessage function starting...");
+
+          this.is_receiving = true;
+          await this.handleMessage(event);
+          this.is_receiving = false;
+
+          console.debug("websocket_class : onmessage function ending...");
+        };
+
+        new_socket.onerror = (message) => {
+          if (this.is_opened) {
+            this.handleError(message);
+          }
+        };
+
+        new_socket.onclose = async (message) => {
+          if (this.is_opened) {
+            await this.handleClose(message);
+          }
+          // Cleanup event handlers after disconnection
+          new_socket.onopen = null;
+          new_socket.onerror = null;
+          new_socket.onclose = null;
+        };
+      }
+      console.debug("class instance :", this);
+
+      return true;
+    } catch (error) {
+      console.error(
+        "websocket_class Exception Error creating WebSocket:",
+        error
+      );
+      this.socket = undefined;
+      return false;
     }
-
-    if (this.keep_connection) {
-      // Need Stopping Ping
-      await this.wait_ping_stop();
-      // Start manually no open event
-      this.start();
-    } else {
-      // restarting
-      // verify Stopping Ping
-      await this.wait_ping_stop();
-      this.is_stopping = false;
-      this.is_opened = false;
-      let new_socket = undefined;
-      new_socket = new WebSocket(wsURL(this.IPDwarf));
-      console.log("Open new Socket");
-
-      this.socket = new_socket;
-      console.debug("new socket created", new_socket);
-
-      this.socket.onopen = () => {
-        if (this.socket) {
-          this.is_opened = true;
-
-          // Socket Binary Mode
-          this.socket.binaryType = "arraybuffer";
-
-          console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
-
-          // Start on the open event
-          this.start();
-        } else {
-          console.debug(`websocket_class : open error socket undefined`);
-        }
-      };
-
-      this.socket.onmessage = async (event) => {
-        console.debug("websocket_class : onmessage function...");
-        while (this.is_sending || this.is_buffered) {
-          await sleep(10);
-        }
-        console.debug("websocket_class : onmessage function starting...");
-
-        this.is_receiving = true;
-        await this.handleMessage(event);
-        this.is_receiving = false;
-
-        console.debug("websocket_class : onmessage function ending...");
-      };
-
-      this.socket.onerror = (message) => {
-        if (this.is_opened) {
-          this.handleError(message);
-        }
-      };
-
-      this.socket.onclose = async (message) => {
-        if (this.is_opened) {
-          await this.handleClose(message);
-        }
-        await this.cleanup();
-      };
-    }
-    console.debug("class instance :", this);
-
-    return true;
   }
 
   start() {
