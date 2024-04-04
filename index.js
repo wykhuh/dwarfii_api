@@ -8,4 +8,5 @@ export * from "./src/rgb_power.js";
 export * from "./src/system.js";
 export * from "./src/websocket_class.js";
 export * from "./src/bluetooth.js";
+export * from "./src/motor.js";
 

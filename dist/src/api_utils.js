@@ -3,6 +3,7 @@
 import $root from "./protobuf/protobuf.js";
 export const Dwarfii_Api = $root;
 import { cmdMapping, responseMapping, notifyMapping, notifyResponseMapping, getClassStateMappings, getClassModeMappings, } from "./cmd_mapping.js";
+import { cmdTxtMapping, errorTxtMapping, stateTxtMapping, } from "./txt_mapping.js";
 var DwarfClientID = "0000DAF2-0000-1000-8000-00805F9B34FB";
 /** Set clientID value if need : defaut is "0000DAF2-0000-1000-8000-00805F9B34FB"
  * @param {string} clientID
@@ -229,6 +230,9 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     if (decoded_message.cmd) {
         decoded_message.data.cmdText = {};
         decoded_message.data.cmdText = Dwarfii_Api.DwarfCMD[decoded_message.cmd];
+        decoded_message.data.cmdPlainTxt = {};
+        if (cmdTxtMapping[decoded_message.cmd])
+            decoded_message.data.cmdPlainTxt = cmdTxtMapping[decoded_message.cmd];
     }
     // add mode response code in plain text
     if (decoded_message.data.mode !== undefined) {
@@ -253,6 +257,10 @@ export function analyzePacket(message_buffer, input_data_log = true) {
                 decoded_message.data.stateText = value;
             }
         }
+        decoded_message.data.statePlainTxt = {};
+        if (stateTxtMapping[decoded_message.data.state])
+            decoded_message.data.statePlainTxt =
+                stateTxtMapping[decoded_message.data.state];
     }
     // add error code in plain text
     if (decoded_message.data.hasOwnProperty("code")) {
@@ -260,6 +268,13 @@ export function analyzePacket(message_buffer, input_data_log = true) {
         if (Dwarfii_Api.DwarfErrorCode[decoded_message.data.code])
             decoded_message.data.errorTxt =
                 Dwarfii_Api.DwarfErrorCode[decoded_message.data.code];
+        decoded_message.data.errorPlainTxt = {};
+        if (decoded_message.data.code == 0)
+            decoded_message.data.errorPlainTxt =
+                errorTxtMapping[decoded_message.data.code];
+        else if (errorTxtMapping[-decoded_message.data.code])
+            decoded_message.data.errorPlainTxt =
+                errorTxtMapping[-decoded_message.data.code];
     }
     if (input_data_log)
         console.log(`End Analyze Input Packet >> ${JSON.stringify(decoded_message)}`);
