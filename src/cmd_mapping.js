@@ -296,6 +296,7 @@ export const notifyMapping = {
   15227: "ResNotifyCPUMode", // CPU mode
   15228: "ResNotifyStateAstroTrackingSpecial", // Sun and moon tracking status
   15229: "ResNotifyPowerOff", // Shutdown notification
+  15230: "ResNotifyNewMediaCreated", // New Media Created
 };
 
 export const notifyResponseMapping = {

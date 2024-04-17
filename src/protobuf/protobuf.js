@@ -26401,6 +26401,207 @@ $root.ResNotifyPowerOff = (function () {
   return ResNotifyPowerOff;
 })();
 
+$root.ResNotifyNewMediaCreated = (function () {
+  /**
+   * Properties of a ResNotifyNewMediaCreated.
+   * @exports IResNotifyNewMediaCreated
+   * @interface IResNotifyNewMediaCreated
+   * @property {number|null} [mediaType] ResNotifyNewMediaCreated mediaType
+   */
+
+  /**
+   * Constructs a new ResNotifyNewMediaCreated.
+   * @exports ResNotifyNewMediaCreated
+   * @classdesc Represents a ResNotifyNewMediaCreated.
+   * @implements IResNotifyNewMediaCreated
+   * @constructor
+   * @param {IResNotifyNewMediaCreated=} [properties] Properties to set
+   */
+  function ResNotifyNewMediaCreated(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null) this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ResNotifyNewMediaCreated mediaType.
+   * @member {number} mediaType
+   * @memberof ResNotifyNewMediaCreated
+   * @instance
+   */
+  ResNotifyNewMediaCreated.prototype.mediaType = 0;
+
+  /**
+   * Creates a new ResNotifyNewMediaCreated instance using the specified properties.
+   * @function create
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {IResNotifyNewMediaCreated=} [properties] Properties to set
+   * @returns {ResNotifyNewMediaCreated} ResNotifyNewMediaCreated instance
+   */
+  ResNotifyNewMediaCreated.create = function create(properties) {
+    return new ResNotifyNewMediaCreated(properties);
+  };
+
+  /**
+   * Encodes the specified ResNotifyNewMediaCreated message. Does not implicitly {@link ResNotifyNewMediaCreated.verify|verify} messages.
+   * @function encode
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {IResNotifyNewMediaCreated} message ResNotifyNewMediaCreated message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResNotifyNewMediaCreated.encode = function encode(message, writer) {
+    if (!writer) writer = $Writer.create();
+    if (
+      message.mediaType != null &&
+      Object.hasOwnProperty.call(message, "mediaType")
+    )
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.mediaType);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ResNotifyNewMediaCreated message, length delimited. Does not implicitly {@link ResNotifyNewMediaCreated.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {IResNotifyNewMediaCreated} message ResNotifyNewMediaCreated message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResNotifyNewMediaCreated.encodeDelimited = function encodeDelimited(
+    message,
+    writer
+  ) {
+    return this.encode(message, writer).ldelim();
+  };
+
+  /**
+   * Decodes a ResNotifyNewMediaCreated message from the specified reader or buffer.
+   * @function decode
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ResNotifyNewMediaCreated} ResNotifyNewMediaCreated
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResNotifyNewMediaCreated.decode = function decode(reader, length) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    var end = length === undefined ? reader.len : reader.pos + length,
+      message = new $root.ResNotifyNewMediaCreated();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          message.mediaType = reader.int32();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ResNotifyNewMediaCreated message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ResNotifyNewMediaCreated} ResNotifyNewMediaCreated
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResNotifyNewMediaCreated.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ResNotifyNewMediaCreated message.
+   * @function verify
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ResNotifyNewMediaCreated.verify = function verify(message) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (message.mediaType != null && message.hasOwnProperty("mediaType"))
+      if (!$util.isInteger(message.mediaType))
+        return "mediaType: integer expected";
+    return null;
+  };
+
+  /**
+   * Creates a ResNotifyNewMediaCreated message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ResNotifyNewMediaCreated} ResNotifyNewMediaCreated
+   */
+  ResNotifyNewMediaCreated.fromObject = function fromObject(object) {
+    if (object instanceof $root.ResNotifyNewMediaCreated) return object;
+    var message = new $root.ResNotifyNewMediaCreated();
+    if (object.mediaType != null) message.mediaType = object.mediaType | 0;
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ResNotifyNewMediaCreated message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {ResNotifyNewMediaCreated} message ResNotifyNewMediaCreated
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ResNotifyNewMediaCreated.toObject = function toObject(message, options) {
+    if (!options) options = {};
+    var object = {};
+    if (options.defaults) object.mediaType = 0;
+    if (message.mediaType != null && message.hasOwnProperty("mediaType"))
+      object.mediaType = message.mediaType;
+    return object;
+  };
+
+  /**
+   * Converts this ResNotifyNewMediaCreated to JSON.
+   * @function toJSON
+   * @memberof ResNotifyNewMediaCreated
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ResNotifyNewMediaCreated.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ResNotifyNewMediaCreated
+   * @function getTypeUrl
+   * @memberof ResNotifyNewMediaCreated
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ResNotifyNewMediaCreated.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ResNotifyNewMediaCreated";
+  };
+
+  return ResNotifyNewMediaCreated;
+})();
+
 $root.ReqStartPanoramaByGrid = (function () {
   /**
    * Properties of a ReqStartPanoramaByGrid.
@@ -27223,6 +27424,7 @@ $root.MessageTypeId = (function () {
  * @property {number} CMD_NOTIFY_CPU_MODE=15227 CMD_NOTIFY_CPU_MODE value
  * @property {number} CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL=15228 CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL value
  * @property {number} CMD_NOTIFY_POWER_OFF=15229 CMD_NOTIFY_POWER_OFF value
+ * @property {number} CMD_NOTIFY_NEW_MEDIA_CREATED=15230 CMD_NOTIFY_NEW_MEDIA_CREATED value
  * @property {number} CMD_PANORAMA_START_GRID=15500 CMD_PANORAMA_START_GRID value
  * @property {number} CMD_PANORAMA_STOP=15501 CMD_PANORAMA_STOP value
  */
@@ -27386,6 +27588,7 @@ $root.DwarfCMD = (function () {
     (valuesById[15228] = "CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL")
   ] = 15228;
   values[(valuesById[15229] = "CMD_NOTIFY_POWER_OFF")] = 15229;
+  values[(valuesById[15230] = "CMD_NOTIFY_NEW_MEDIA_CREATED")] = 15230;
   values[(valuesById[15500] = "CMD_PANORAMA_START_GRID")] = 15500;
   values[(valuesById[15501] = "CMD_PANORAMA_STOP")] = 15501;
   return values;

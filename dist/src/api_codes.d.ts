@@ -22,13 +22,13 @@ export const whiteBalanceScenesIDValue: {
     6: string;
 };
 export const whiteBalanceScenesValueID: {
-    "incandescent lamp": number;
-    "fluorescent lamp": number;
-    "warm fluorescent lamp": number;
+    incandescent: number;
+    "warm fluorescent": number;
+    fluorescent: number;
     sunlight: number;
-    "overcast sky": number;
-    "evening twilight": number;
+    cloudy: number;
     shadow: number;
+    twilight: number;
 };
 export const IRCut: 0;
 export const IRPass: 1;

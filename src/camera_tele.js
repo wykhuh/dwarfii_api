@@ -573,7 +573,338 @@ export function messageCameraTeleGetIRCut() {
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
-
+/**
+ * 3.7.27 Set white balance mode
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_MODE
+ * @param {number} mode ; //0: Auto 1: Manual  ;
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBMode(mode) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_WB_MODE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ mode: mode });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.28 Acquire white balance mode
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_MODE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBMode() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_WB_MODE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.29 Set white balance scene
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_SCENE
+ * @param {number} value ; // See whiteBalanceScenesIDValue
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBScene(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_WB_SCENE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.30 Get white balance scene
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_SCENE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBScene() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_WB_SCENE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.31 Set the white balance color temperature value
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_CT
+ * @param {number} index  ; // See whiteBalanceScenesIDValue
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBColorTemp(index) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_WB_CT;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ index: index });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.32 Obtain the white balance color temperature value
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_CT
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBColorTemp() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_WB_CT;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.33 Set brightness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_BRIGHTNESS
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetBrightness(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_BRIGHTNESS;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.34 Acquire brightness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_BRIGHTNESS
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetBrightness() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_BRIGHTNESS;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.35 Set contrast
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_CONTRAST
+ * UI value (A) -100  100  0 (Default)
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetContrast(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_CONTRAST;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.36 Get contrast
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_CONTRAST
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetContrast() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_CONTRAST;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.37 Set saturation
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_SATURATION
+ * UI value (A) -100  100  0 (Default)
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetSaturation(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_SATURATION;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.38 Acquire saturation
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_SATURATION
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetSaturation() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_SATURATION;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.39 Set tone
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_HUE
+ * UI value (A) -180  180  0 (Default)
+ * @param {number} value  ; B =(A + 180) * 255.0 / 360
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetHue(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_HUE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.40 Get hue
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_HUE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetHue() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_HUE;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.41 Set sharpness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_SHARPNESS
+ * UI value (A) 0  100  50 (Default)
+ * @param {number} value  ; B = A
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetSharpness(value) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_SHARPNESS;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({ value: value });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.7.42 Acquire sharpness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_SHARPNESS
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetSharpness() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_GET_SHARPNESS;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
 /**
  * 3.7.43 Set jpg preview quality
  * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_JPG_QUALITY

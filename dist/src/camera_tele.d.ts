@@ -172,6 +172,114 @@ export function messageCameraTeleSetIRCut(value: number): Uint8Array;
  */
 export function messageCameraTeleGetIRCut(): Uint8Array;
 /**
+ * 3.7.27 Set white balance mode
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_MODE
+ * @param {number} mode ; //0: Auto 1: Manual  ;
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBMode(mode: number): Uint8Array;
+/**
+ * 3.7.28 Acquire white balance mode
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_MODE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBMode(): Uint8Array;
+/**
+ * 3.7.29 Set white balance scene
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_SCENE
+ * @param {number} value ; // See whiteBalanceScenesIDValue
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBScene(value: number): Uint8Array;
+/**
+ * 3.7.30 Get white balance scene
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_SCENE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBScene(): Uint8Array;
+/**
+ * 3.7.31 Set the white balance color temperature value
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_WB_CT
+ * @param {number} index  ; // See whiteBalanceScenesIDValue
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetWBColorTemp(index: number): Uint8Array;
+/**
+ * 3.7.32 Obtain the white balance color temperature value
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_WB_CT
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetWBColorTemp(): Uint8Array;
+/**
+ * 3.7.33 Set brightness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_BRIGHTNESS
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetBrightness(value: number): Uint8Array;
+/**
+ * 3.7.34 Acquire brightness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_BRIGHTNESS
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetBrightness(): Uint8Array;
+/**
+ * 3.7.35 Set contrast
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_CONTRAST
+ * UI value (A) -100  100  0 (Default)
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetContrast(value: number): Uint8Array;
+/**
+ * 3.7.36 Get contrast
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_CONTRAST
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetContrast(): Uint8Array;
+/**
+ * 3.7.37 Set saturation
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_SATURATION
+ * UI value (A) -100  100  0 (Default)
+ * @param {number} value  ; B = (A + 100) * 255.0 / 200
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetSaturation(value: number): Uint8Array;
+/**
+ * 3.7.38 Acquire saturation
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_SATURATION
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetSaturation(): Uint8Array;
+/**
+ * 3.7.39 Set tone
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_HUE
+ * UI value (A) -180  180  0 (Default)
+ * @param {number} value  ; B =(A + 180) * 255.0 / 360
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetHue(value: number): Uint8Array;
+/**
+ * 3.7.40 Get hue
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_HUE
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetHue(): Uint8Array;
+/**
+ * 3.7.41 Set sharpness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_SHARPNESS
+ * UI value (A) 0  100  50 (Default)
+ * @param {number} value  ; B = A
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleSetSharpness(value: number): Uint8Array;
+/**
+ * 3.7.42 Acquire sharpness
+ * Create Encoded Packet for the command CMD_CAMERA_TELE_GET_SHARPNESS
+ * @returns {Uint8Array}
+ */
+export function messageCameraTeleGetSharpness(): Uint8Array;
+/**
  * 3.7.43 Set jpg preview quality
  * Create Encoded Packet for the command CMD_CAMERA_TELE_SET_JPG_QUALITY
  * @param {number} quality  ;

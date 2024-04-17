@@ -45,22 +45,22 @@ export const exposureTelephotoModeAuto = 0;
 export const exposureWideangleModeAuto = 3;
 // whitebalance
 export const whiteBalanceScenesIDValue = {
-    0: "incandescent lamp",
-    1: "fluorescent lamp",
-    2: "warm fluorescent lamp",
+    0: "incandescent",
+    1: "warm fluorescent",
+    2: "fluorescent",
     3: "sunlight",
-    4: "overcast sky",
-    5: "evening twilight",
-    6: "shadow",
+    4: "cloudy",
+    5: "shadow",
+    6: "twilight",
 };
 export const whiteBalanceScenesValueID = {
-    "incandescent lamp": 0,
-    "fluorescent lamp": 1,
-    "warm fluorescent lamp": 2,
+    incandescent: 0,
+    "warm fluorescent": 1,
+    fluorescent: 2,
     sunlight: 3,
-    "overcast sky": 4,
-    "evening twilight": 5,
-    shadow: 6,
+    cloudy: 4,
+    shadow: 5,
+    twilight: 6,
 };
 // IR
 export const IRCut = 0;

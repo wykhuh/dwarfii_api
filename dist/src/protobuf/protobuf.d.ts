@@ -11237,6 +11237,96 @@ export class ResNotifyPowerOff implements IResNotifyPowerOff {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Represents a ResNotifyNewMediaCreated. */
+export class ResNotifyNewMediaCreated implements IResNotifyNewMediaCreated {
+
+    /**
+     * Constructs a new ResNotifyNewMediaCreated.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResNotifyNewMediaCreated);
+
+    /** ResNotifyNewMediaCreated mediaType. */
+    public mediaType: number;
+
+    /**
+     * Creates a new ResNotifyNewMediaCreated instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResNotifyNewMediaCreated instance
+     */
+    public static create(properties?: IResNotifyNewMediaCreated): ResNotifyNewMediaCreated;
+
+    /**
+     * Encodes the specified ResNotifyNewMediaCreated message. Does not implicitly {@link ResNotifyNewMediaCreated.verify|verify} messages.
+     * @param message ResNotifyNewMediaCreated message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IResNotifyNewMediaCreated, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResNotifyNewMediaCreated message, length delimited. Does not implicitly {@link ResNotifyNewMediaCreated.verify|verify} messages.
+     * @param message ResNotifyNewMediaCreated message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IResNotifyNewMediaCreated, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ResNotifyNewMediaCreated message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResNotifyNewMediaCreated
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ResNotifyNewMediaCreated;
+
+    /**
+     * Decodes a ResNotifyNewMediaCreated message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResNotifyNewMediaCreated
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ResNotifyNewMediaCreated;
+
+    /**
+     * Verifies a ResNotifyNewMediaCreated message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ResNotifyNewMediaCreated message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResNotifyNewMediaCreated
+     */
+    public static fromObject(object: { [k: string]: any }): ResNotifyNewMediaCreated;
+
+    /**
+     * Creates a plain object from a ResNotifyNewMediaCreated message. Also converts values to other types if specified.
+     * @param message ResNotifyNewMediaCreated
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ResNotifyNewMediaCreated, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ResNotifyNewMediaCreated to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResNotifyNewMediaCreated
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** Represents a ReqStartPanoramaByGrid. */
 export class ReqStartPanoramaByGrid implements IReqStartPanoramaByGrid {
 
@@ -11674,6 +11764,7 @@ export enum DwarfCMD {
     CMD_NOTIFY_CPU_MODE = 15227,
     CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL = 15228,
     CMD_NOTIFY_POWER_OFF = 15229,
+    CMD_NOTIFY_NEW_MEDIA_CREATED = 15230,
     CMD_PANORAMA_START_GRID = 15500,
     CMD_PANORAMA_STOP = 15501
 }

@@ -161,3 +161,7 @@ message ResNotifyStateAstroTrackingSpecial {
 // 关机通知
 message ResNotifyPowerOff {
 }
+
+message ResNotifyNewMediaCreated {
+    int32 media_type = 1;
+}

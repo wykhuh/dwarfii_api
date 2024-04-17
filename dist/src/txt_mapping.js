@@ -192,6 +192,7 @@ export const cmdTxtMapping = {
     15227: "CPU mode",
     15228: "Sun and moon tracking status",
     15229: "Shutdown notification",
+    15230: "New Media Created",
     15500: "Start panorama",
     15501: "Stop panorama",
 };
