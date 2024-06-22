@@ -10,12 +10,22 @@ import { cmdMapping } from "./cmd_mapping.js";
 /**
  * 3.13.3 Motor motion
  * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN
- * @param {number} id ; //0: Rotation axis 1: Pitch axis
+ * @param {number} id ; //1  : Rotation axis   2:   Pitch axis
  * @param {number} speed ; //5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
  * @param {boolean} direction ; //0: left/down 1: right/up
  * @param {number} speed_ramping ; //Acceleration and deceleration: 0-1000, 100 gears, a total of 11 gears
  * @param {number} resolution_level ; //Subdivision: 5:32 subdivision
- * @returns {Uint8Array}
+  //     Subdivision:
+  // 0：256 Subdivision
+  // 1：128 Subdivision
+  // 2：64 Subdivision
+  // 3：32 Subdivision
+  // 4：16 Subdivision
+  // 5：8 Subdivision
+  // 6：4 Subdivision
+  // 7：2 Subdivision
+  // 8：1 Subdivision
+  * @returns {Uint8Array}
  */
 export function messageStepMotorMotion(id, speed, direction, speed_ramping, resolution_level) {
     let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
@@ -146,6 +156,108 @@ export function messageStepMotorServiceDualCameraLinkage(x, y) {
     let class_message = eval(`Dwarfii_Api.${cmdClass}`);
     // Encode message
     let message = class_message.create({ x: x, y: y });
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.13.9 Motor Run To (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN_TO
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {number} end_position ;
+ * @param {number} speed ; //5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
+ * @param {number} speed_ramping ; //Acceleration and deceleration: 0-1000, 100 gears, a total of 11 gears
+ * @param {number} resolution_level ; //Subdivision: 5:32 subdivision
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorMotionTo(id, end_position, speed, speed_ramping, resolution_level) {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_RUN_TO;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({
+        id: id,
+        endPosition: end_position,
+        speed: speed,
+        speedRamping: speed_ramping,
+        resolutionLevel: resolution_level,
+    });
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.13.10 Motor Reset (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_RESET
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {boolean} direction; //2 : 0: left/down 1: right/up
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorReset(id, direction) {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_RESET;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({
+        id: id,
+        direction: direction,
+    });
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.13.11 Motor Change Speed (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_SPEED
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {number} speed; //2 : 5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorChangeSpeed(id, speed) {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_CHANGE_SPEED;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({
+        id: id,
+        speed: speed,
+    });
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.13.12 Motor Change direction (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_DIRECTION
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {boolean} direction ; //0: left/down 1: right/up
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorChangeDirection(id, direction) {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_CHANGE_DIRECTION;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({
+        id: id,
+        direction: direction,
+    });
     console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
     // return encoded Message Packet
     return createPacket(message, class_message, module_id, interface_id, type_id);

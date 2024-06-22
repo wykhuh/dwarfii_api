@@ -98,7 +98,7 @@ export const cmdMapping = {
     13001: "ReqSetTimezone", // Set the time zone
     13002: "ReqSetMtpMode", // Set MTP mode
     13003: "ReqSetCpuMode", // Set CPU mode
-    13004: "ReqSetHostSalveMode", // Set HOST SLAVE mode
+    13004: "ReqSetHostSlaveMode", // Set HOST SLAVE mode
     13500: "ReqOpenRgb", // Turn on the ring light
     13501: "ReqCloseRgb", // Turn off the ring light
     13502: "ReqPowerDown", // Shut down
@@ -106,7 +106,11 @@ export const cmdMapping = {
     13504: "ReqClosePowerInd", // Turn off battery indicator =
     13505: "ReqReboot", // Restart
     14000: "ReqMotorRun", // Motor motion
+    14001: "ReqMotorRunTo", // Motor motion to
     14002: "ReqMotorStop", // Motor stop
+    14003: "ReqMotorReset", // Motor Reset
+    14004: "ReqMotorChangeSpeed", // Motor Change Speed
+    14005: "ReqMotorChangeDirection", // Motor ChangeDirection
     14006: "ReqMotorServiceJoystick", // Joystick
     14007: "ReqMotorServiceJoystickFixedAngle", // Short press the arrow keys with the joystick
     14008: "ReqMotorServiceJoystickStop", // Stop joystick
@@ -121,6 +125,7 @@ export const cmdMapping = {
     15005: "ReqStopAstroAutoFocus", // Stop astronomical autofocus
     15500: "ReqStartPanoramaByGrid", // Start panorama
     15501: "ReqStopPanorama", // Stop panorama
+    15502: "ReqStartPanoramaByEulerRange", // Start panorama Euler Range
 };
 export const responseMapping = {
     // BLE Class Response
@@ -227,8 +232,12 @@ export const responseMapping = {
     13503: "ComResponse", // Turn on the battery indicator
     13504: "ComResponse", // Turn off battery indicator =
     13505: "ComResponse", // Restart
-    14000: "ReqMotorRun", // Motor motion
-    14002: "ReqMotorStop", // Motor stop
+    14000: "ResMotor", // Motor motion
+    14001: "ResMotor", // Motor motion to
+    14002: "ResMotor", // Motor stop
+    14003: "ResMotor", // Motor Reset
+    14004: "ResMotor", // Motor Change Speed
+    14005: "ResMotor", // Motor ChangeDirection
     14006: "ComResponse", // Joystick
     14007: "ComResponse", // Short press the arrow keys with the joystick
     14008: "ComResponse", // Stop joystick
@@ -243,6 +252,7 @@ export const responseMapping = {
     15005: "ComResponse", // Stop astronomical autofocus
     15500: "ComResponse", // Start panorama
     15501: "ComResponse", // Stop panorama
+    15502: "ComResponse", // Start panorama Euler Range
 };
 export const notifyMapping = {
     15200: "ResNotifyPictureMatching", // Telephoto wide-angle image matching
@@ -373,7 +383,11 @@ export const notifyResponseMapping = {
     13504: "ComResponse", // Turn off battery indicator =
     13505: "ComResponse", // Restart
     14000: "ReqMotorRun", // Motor motion
-    14002: "ReqMotorStop", // Motor stop
+    14001: "ResMotorPosition", // Motor motion to
+    14002: "ResMotor", // Motor stop
+    14003: "ResMotor", // Motor Reset
+    14004: "ResMotor", // Motor Change Speed
+    14005: "ResMotor", // Motor ChangeDirection
     14006: "ComResponse", // Joystick
     14007: "ComResponse", // Short press the arrow keys with the joystick
     14008: "ComResponse", // Stop joystick
@@ -388,6 +402,7 @@ export const notifyResponseMapping = {
     15005: "ComResponse", // Stop astronomical autofocus
     15500: "ComResponse", // Start panorama
     15501: "ComResponse", // Stop panorama
+    15502: "ComResponse", // Start panorama Euler Range
 };
 const classStateMappings = {
     "Dwarfii_Api.ResNotifyStateAstroGoto:0": "ASTRO_STATE_IDLE",

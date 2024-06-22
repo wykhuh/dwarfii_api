@@ -26007,7 +26007,7 @@ $root.MessageTypeId = (function () {
  * @property {number} CMD_SYSTEM_SET_TIME_ZONE=13001 CMD_SYSTEM_SET_TIME_ZONE value
  * @property {number} CMD_SYSTEM_SET_MTP_MODE=13002 CMD_SYSTEM_SET_MTP_MODE value
  * @property {number} CMD_SYSTEM_SET_CPU_MODE=13003 CMD_SYSTEM_SET_CPU_MODE value
- * @property {number} CMD_SYSTEM_SET_HOST_MODE=13004 CMD_SYSTEM_SET_HOST_MODE value
+ * @property {number} CMD_SYSTEM_SET_HOSTSLAVE_MODE=13004 CMD_SYSTEM_SET_HOSTSLAVE_MODE value
  * @property {number} CMD_RGB_POWER_OPEN_RGB=13500 CMD_RGB_POWER_OPEN_RGB value
  * @property {number} CMD_RGB_POWER_CLOSE_RGB=13501 CMD_RGB_POWER_CLOSE_RGB value
  * @property {number} CMD_RGB_POWER_POWER_DOWN=13502 CMD_RGB_POWER_POWER_DOWN value
@@ -26015,7 +26015,11 @@ $root.MessageTypeId = (function () {
  * @property {number} CMD_RGB_POWER_POWERIND_OFF=13504 CMD_RGB_POWER_POWERIND_OFF value
  * @property {number} CMD_RGB_POWER_REBOOT=13505 CMD_RGB_POWER_REBOOT value
  * @property {number} CMD_STEP_MOTOR_RUN=14000 CMD_STEP_MOTOR_RUN value
+ * @property {number} CMD_STEP_MOTOR_RUN_TO=14001 CMD_STEP_MOTOR_RUN_TO value
  * @property {number} CMD_STEP_MOTOR_STOP=14002 CMD_STEP_MOTOR_STOP value
+ * @property {number} CMD_STEP_MOTOR_RESET=14003 CMD_STEP_MOTOR_RESET value
+ * @property {number} CMD_STEP_MOTOR_CHANGE_SPEED=14004 CMD_STEP_MOTOR_CHANGE_SPEED value
+ * @property {number} CMD_STEP_MOTOR_CHANGE_DIRECTION=14005 CMD_STEP_MOTOR_CHANGE_DIRECTION value
  * @property {number} CMD_STEP_MOTOR_SERVICE_JOYSTICK=14006 CMD_STEP_MOTOR_SERVICE_JOYSTICK value
  * @property {number} CMD_STEP_MOTOR_SERVICE_JOYSTICK_FIXED_ANGLE=14007 CMD_STEP_MOTOR_SERVICE_JOYSTICK_FIXED_ANGLE value
  * @property {number} CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP=14008 CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP value
@@ -26061,6 +26065,7 @@ $root.MessageTypeId = (function () {
  * @property {number} CMD_NOTIFY_NEW_MEDIA_CREATED=15230 CMD_NOTIFY_NEW_MEDIA_CREATED value
  * @property {number} CMD_PANORAMA_START_GRID=15500 CMD_PANORAMA_START_GRID value
  * @property {number} CMD_PANORAMA_STOP=15501 CMD_PANORAMA_STOP value
+ * @property {number} CMD_PANORAMA_START_EULER_RANGE=15502 CMD_PANORAMA_START_EULER_RANGE value
  */
 $root.DwarfCMD = (function () {
     var valuesById = {}, values = Object.create(valuesById);
@@ -26152,7 +26157,7 @@ $root.DwarfCMD = (function () {
     values[(valuesById[13001] = "CMD_SYSTEM_SET_TIME_ZONE")] = 13001;
     values[(valuesById[13002] = "CMD_SYSTEM_SET_MTP_MODE")] = 13002;
     values[(valuesById[13003] = "CMD_SYSTEM_SET_CPU_MODE")] = 13003;
-    values[(valuesById[13004] = "CMD_SYSTEM_SET_HOST_MODE")] = 13004;
+    values[(valuesById[13004] = "CMD_SYSTEM_SET_HOSTSLAVE_MODE")] = 13004;
     values[(valuesById[13500] = "CMD_RGB_POWER_OPEN_RGB")] = 13500;
     values[(valuesById[13501] = "CMD_RGB_POWER_CLOSE_RGB")] = 13501;
     values[(valuesById[13502] = "CMD_RGB_POWER_POWER_DOWN")] = 13502;
@@ -26160,7 +26165,11 @@ $root.DwarfCMD = (function () {
     values[(valuesById[13504] = "CMD_RGB_POWER_POWERIND_OFF")] = 13504;
     values[(valuesById[13505] = "CMD_RGB_POWER_REBOOT")] = 13505;
     values[(valuesById[14000] = "CMD_STEP_MOTOR_RUN")] = 14000;
+    values[(valuesById[14001] = "CMD_STEP_MOTOR_RUN_TO")] = 14001;
     values[(valuesById[14002] = "CMD_STEP_MOTOR_STOP")] = 14002;
+    values[(valuesById[14003] = "CMD_STEP_MOTOR_RESET")] = 14003;
+    values[(valuesById[14004] = "CMD_STEP_MOTOR_CHANGE_SPEED")] = 14004;
+    values[(valuesById[14005] = "CMD_STEP_MOTOR_CHANGE_DIRECTION")] = 14005;
     values[(valuesById[14006] = "CMD_STEP_MOTOR_SERVICE_JOYSTICK")] = 14006;
     values[(valuesById[14007] = "CMD_STEP_MOTOR_SERVICE_JOYSTICK_FIXED_ANGLE")] = 14007;
     values[(valuesById[14008] = "CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP")] = 14008;
@@ -26206,6 +26215,7 @@ $root.DwarfCMD = (function () {
     values[(valuesById[15230] = "CMD_NOTIFY_NEW_MEDIA_CREATED")] = 15230;
     values[(valuesById[15500] = "CMD_PANORAMA_START_GRID")] = 15500;
     values[(valuesById[15501] = "CMD_PANORAMA_STOP")] = 15501;
+    values[(valuesById[15502] = "CMD_PANORAMA_START_EULER_RANGE")] = 15502;
     return values;
 })();
 /**
@@ -28135,55 +28145,55 @@ $root.ReqSetCpuMode = (function () {
     };
     return ReqSetCpuMode;
 })();
-$root.ReqSetHostSalveMode = (function () {
+$root.ReqSetHostSlaveMode = (function () {
     /**
-     * Properties of a ReqSetHostSalveMode.
-     * @exports IReqSetHostSalveMode
-     * @interface IReqSetHostSalveMode
-     * @property {number|null} [mode] ReqSetHostSalveMode mode
+     * Properties of a ReqSetHostSlaveMode.
+     * @exports IReqSetHostSlaveMode
+     * @interface IReqSetHostSlaveMode
+     * @property {number|null} [mode] ReqSetHostSlaveMode mode
      */
     /**
-     * Constructs a new ReqSetHostSalveMode.
-     * @exports ReqSetHostSalveMode
-     * @classdesc Represents a ReqSetHostSalveMode.
-     * @implements IReqSetHostSalveMode
+     * Constructs a new ReqSetHostSlaveMode.
+     * @exports ReqSetHostSlaveMode
+     * @classdesc Represents a ReqSetHostSlaveMode.
+     * @implements IReqSetHostSlaveMode
      * @constructor
-     * @param {IReqSetHostSalveMode=} [properties] Properties to set
+     * @param {IReqSetHostSlaveMode=} [properties] Properties to set
      */
-    function ReqSetHostSalveMode(properties) {
+    function ReqSetHostSlaveMode(properties) {
         if (properties)
             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                 if (properties[keys[i]] != null)
                     this[keys[i]] = properties[keys[i]];
     }
     /**
-     * ReqSetHostSalveMode mode.
+     * ReqSetHostSlaveMode mode.
      * @member {number} mode
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @instance
      */
-    ReqSetHostSalveMode.prototype.mode = 0;
+    ReqSetHostSlaveMode.prototype.mode = 0;
     /**
-     * Creates a new ReqSetHostSalveMode instance using the specified properties.
+     * Creates a new ReqSetHostSlaveMode instance using the specified properties.
      * @function create
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
-     * @param {IReqSetHostSalveMode=} [properties] Properties to set
-     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode instance
+     * @param {IReqSetHostSlaveMode=} [properties] Properties to set
+     * @returns {ReqSetHostSlaveMode} ReqSetHostSlaveMode instance
      */
-    ReqSetHostSalveMode.create = function create(properties) {
-        return new ReqSetHostSalveMode(properties);
+    ReqSetHostSlaveMode.create = function create(properties) {
+        return new ReqSetHostSlaveMode(properties);
     };
     /**
-     * Encodes the specified ReqSetHostSalveMode message. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
+     * Encodes the specified ReqSetHostSlaveMode message. Does not implicitly {@link ReqSetHostSlaveMode.verify|verify} messages.
      * @function encode
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
-     * @param {IReqSetHostSalveMode} message ReqSetHostSalveMode message or plain object to encode
+     * @param {IReqSetHostSlaveMode} message ReqSetHostSlaveMode message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    ReqSetHostSalveMode.encode = function encode(message, writer) {
+    ReqSetHostSlaveMode.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
         if (message.mode != null && Object.hasOwnProperty.call(message, "mode"))
@@ -28191,32 +28201,32 @@ $root.ReqSetHostSalveMode = (function () {
         return writer;
     };
     /**
-     * Encodes the specified ReqSetHostSalveMode message, length delimited. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
+     * Encodes the specified ReqSetHostSlaveMode message, length delimited. Does not implicitly {@link ReqSetHostSlaveMode.verify|verify} messages.
      * @function encodeDelimited
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
-     * @param {IReqSetHostSalveMode} message ReqSetHostSalveMode message or plain object to encode
+     * @param {IReqSetHostSlaveMode} message ReqSetHostSlaveMode message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    ReqSetHostSalveMode.encodeDelimited = function encodeDelimited(message, writer) {
+    ReqSetHostSlaveMode.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
     };
     /**
-     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer.
+     * Decodes a ReqSetHostSlaveMode message from the specified reader or buffer.
      * @function decode
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
-     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
+     * @returns {ReqSetHostSlaveMode} ReqSetHostSlaveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    ReqSetHostSalveMode.decode = function decode(reader, length) {
+    ReqSetHostSlaveMode.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ReqSetHostSalveMode();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ReqSetHostSlaveMode();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -28232,29 +28242,29 @@ $root.ReqSetHostSalveMode = (function () {
         return message;
     };
     /**
-     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer, length delimited.
+     * Decodes a ReqSetHostSlaveMode message from the specified reader or buffer, length delimited.
      * @function decodeDelimited
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
+     * @returns {ReqSetHostSlaveMode} ReqSetHostSlaveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    ReqSetHostSalveMode.decodeDelimited = function decodeDelimited(reader) {
+    ReqSetHostSlaveMode.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
             reader = new $Reader(reader);
         return this.decode(reader, reader.uint32());
     };
     /**
-     * Verifies a ReqSetHostSalveMode message.
+     * Verifies a ReqSetHostSlaveMode message.
      * @function verify
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
      * @param {Object.<string,*>} message Plain object to verify
      * @returns {string|null} `null` if valid, otherwise the reason why it is not
      */
-    ReqSetHostSalveMode.verify = function verify(message) {
+    ReqSetHostSlaveMode.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
         if (message.mode != null && message.hasOwnProperty("mode"))
@@ -28263,31 +28273,31 @@ $root.ReqSetHostSalveMode = (function () {
         return null;
     };
     /**
-     * Creates a ReqSetHostSalveMode message from a plain object. Also converts values to their respective internal types.
+     * Creates a ReqSetHostSlaveMode message from a plain object. Also converts values to their respective internal types.
      * @function fromObject
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
      * @param {Object.<string,*>} object Plain object
-     * @returns {ReqSetHostSalveMode} ReqSetHostSalveMode
+     * @returns {ReqSetHostSlaveMode} ReqSetHostSlaveMode
      */
-    ReqSetHostSalveMode.fromObject = function fromObject(object) {
-        if (object instanceof $root.ReqSetHostSalveMode)
+    ReqSetHostSlaveMode.fromObject = function fromObject(object) {
+        if (object instanceof $root.ReqSetHostSlaveMode)
             return object;
-        var message = new $root.ReqSetHostSalveMode();
+        var message = new $root.ReqSetHostSlaveMode();
         if (object.mode != null)
             message.mode = object.mode | 0;
         return message;
     };
     /**
-     * Creates a plain object from a ReqSetHostSalveMode message. Also converts values to other types if specified.
+     * Creates a plain object from a ReqSetHostSlaveMode message. Also converts values to other types if specified.
      * @function toObject
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
-     * @param {ReqSetHostSalveMode} message ReqSetHostSalveMode
+     * @param {ReqSetHostSlaveMode} message ReqSetHostSlaveMode
      * @param {$protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
-    ReqSetHostSalveMode.toObject = function toObject(message, options) {
+    ReqSetHostSlaveMode.toObject = function toObject(message, options) {
         if (!options)
             options = {};
         var object = {};
@@ -28298,30 +28308,30 @@ $root.ReqSetHostSalveMode = (function () {
         return object;
     };
     /**
-     * Converts this ReqSetHostSalveMode to JSON.
+     * Converts this ReqSetHostSlaveMode to JSON.
      * @function toJSON
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @instance
      * @returns {Object.<string,*>} JSON object
      */
-    ReqSetHostSalveMode.prototype.toJSON = function toJSON() {
+    ReqSetHostSlaveMode.prototype.toJSON = function toJSON() {
         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
     };
     /**
-     * Gets the default type url for ReqSetHostSalveMode
+     * Gets the default type url for ReqSetHostSlaveMode
      * @function getTypeUrl
-     * @memberof ReqSetHostSalveMode
+     * @memberof ReqSetHostSlaveMode
      * @static
      * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns {string} The default type url
      */
-    ReqSetHostSalveMode.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    ReqSetHostSlaveMode.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
         if (typeUrlPrefix === undefined) {
             typeUrlPrefix = "type.googleapis.com";
         }
-        return typeUrlPrefix + "/ReqSetHostSalveMode";
+        return typeUrlPrefix + "/ReqSetHostSlaveMode";
     };
-    return ReqSetHostSalveMode;
+    return ReqSetHostSlaveMode;
 })();
 $root.ReqStartTrack = (function () {
     /**

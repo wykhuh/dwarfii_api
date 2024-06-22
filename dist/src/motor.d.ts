@@ -4,12 +4,22 @@
 /**
  * 3.13.3 Motor motion
  * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN
- * @param {number} id ; //0: Rotation axis 1: Pitch axis
+ * @param {number} id ; //1  : Rotation axis   2:   Pitch axis
  * @param {number} speed ; //5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
  * @param {boolean} direction ; //0: left/down 1: right/up
  * @param {number} speed_ramping ; //Acceleration and deceleration: 0-1000, 100 gears, a total of 11 gears
  * @param {number} resolution_level ; //Subdivision: 5:32 subdivision
- * @returns {Uint8Array}
+  //     Subdivision:
+  // 0：256 Subdivision
+  // 1：128 Subdivision
+  // 2：64 Subdivision
+  // 3：32 Subdivision
+  // 4：16 Subdivision
+  // 5：8 Subdivision
+  // 6：4 Subdivision
+  // 7：2 Subdivision
+  // 8：1 Subdivision
+  * @returns {Uint8Array}
  */
 export function messageStepMotorMotion(id: number, speed: number, direction: boolean, speed_ramping: number, resolution_level: number): Uint8Array;
 /**
@@ -52,4 +62,39 @@ export function messageStepMotorServiceJoystickStop(): Uint8Array;
  * @returns {Uint8Array}
  */
 export function messageStepMotorServiceDualCameraLinkage(x: number, y: number): Uint8Array;
+/**
+ * 3.13.9 Motor Run To (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN_TO
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {number} end_position ;
+ * @param {number} speed ; //5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
+ * @param {number} speed_ramping ; //Acceleration and deceleration: 0-1000, 100 gears, a total of 11 gears
+ * @param {number} resolution_level ; //Subdivision: 5:32 subdivision
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorMotionTo(id: number, end_position: number, speed: number, speed_ramping: number, resolution_level: number): Uint8Array;
+/**
+ * 3.13.10 Motor Reset (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_RESET
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {boolean} direction; //2 : 0: left/down 1: right/up
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorReset(id: number, direction: boolean): Uint8Array;
+/**
+ * 3.13.11 Motor Change Speed (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_SPEED
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {number} speed; //2 : 5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorChangeSpeed(id: number, speed: number): Uint8Array;
+/**
+ * 3.13.12 Motor Change direction (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_DIRECTION
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @param {boolean} direction ; //0: left/down 1: right/up
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorChangeDirection(id: number, direction: boolean): Uint8Array;
 //# sourceMappingURL=motor.d.ts.map

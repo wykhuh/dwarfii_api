@@ -11713,7 +11713,7 @@ export enum DwarfCMD {
     CMD_SYSTEM_SET_TIME_ZONE = 13001,
     CMD_SYSTEM_SET_MTP_MODE = 13002,
     CMD_SYSTEM_SET_CPU_MODE = 13003,
-    CMD_SYSTEM_SET_HOST_MODE = 13004,
+    CMD_SYSTEM_SET_HOSTSLAVE_MODE = 13004,
     CMD_RGB_POWER_OPEN_RGB = 13500,
     CMD_RGB_POWER_CLOSE_RGB = 13501,
     CMD_RGB_POWER_POWER_DOWN = 13502,
@@ -11721,7 +11721,11 @@ export enum DwarfCMD {
     CMD_RGB_POWER_POWERIND_OFF = 13504,
     CMD_RGB_POWER_REBOOT = 13505,
     CMD_STEP_MOTOR_RUN = 14000,
+    CMD_STEP_MOTOR_RUN_TO = 14001,
     CMD_STEP_MOTOR_STOP = 14002,
+    CMD_STEP_MOTOR_RESET = 14003,
+    CMD_STEP_MOTOR_CHANGE_SPEED = 14004,
+    CMD_STEP_MOTOR_CHANGE_DIRECTION = 14005,
     CMD_STEP_MOTOR_SERVICE_JOYSTICK = 14006,
     CMD_STEP_MOTOR_SERVICE_JOYSTICK_FIXED_ANGLE = 14007,
     CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP = 14008,
@@ -11766,7 +11770,8 @@ export enum DwarfCMD {
     CMD_NOTIFY_POWER_OFF = 15229,
     CMD_NOTIFY_NEW_MEDIA_CREATED = 15230,
     CMD_PANORAMA_START_GRID = 15500,
-    CMD_PANORAMA_STOP = 15501
+    CMD_PANORAMA_STOP = 15501,
+    CMD_PANORAMA_START_EULER_RANGE = 15502
 }
 
 /** DwarfErrorCode enum. */
@@ -12733,90 +12738,90 @@ export class ReqSetCpuMode implements IReqSetCpuMode {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
-/** Represents a ReqSetHostSalveMode. */
-export class ReqSetHostSalveMode implements IReqSetHostSalveMode {
+/** Represents a ReqSetHostSlaveMode. */
+export class ReqSetHostSlaveMode implements IReqSetHostSlaveMode {
 
     /**
-     * Constructs a new ReqSetHostSalveMode.
+     * Constructs a new ReqSetHostSlaveMode.
      * @param [properties] Properties to set
      */
-    constructor(properties?: IReqSetHostSalveMode);
+    constructor(properties?: IReqSetHostSlaveMode);
 
-    /** ReqSetHostSalveMode mode. */
+    /** ReqSetHostSlaveMode mode. */
     public mode: number;
 
     /**
-     * Creates a new ReqSetHostSalveMode instance using the specified properties.
+     * Creates a new ReqSetHostSlaveMode instance using the specified properties.
      * @param [properties] Properties to set
-     * @returns ReqSetHostSalveMode instance
+     * @returns ReqSetHostSlaveMode instance
      */
-    public static create(properties?: IReqSetHostSalveMode): ReqSetHostSalveMode;
+    public static create(properties?: IReqSetHostSlaveMode): ReqSetHostSlaveMode;
 
     /**
-     * Encodes the specified ReqSetHostSalveMode message. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
-     * @param message ReqSetHostSalveMode message or plain object to encode
+     * Encodes the specified ReqSetHostSlaveMode message. Does not implicitly {@link ReqSetHostSlaveMode.verify|verify} messages.
+     * @param message ReqSetHostSlaveMode message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encode(message: IReqSetHostSalveMode, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encode(message: IReqSetHostSlaveMode, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Encodes the specified ReqSetHostSalveMode message, length delimited. Does not implicitly {@link ReqSetHostSalveMode.verify|verify} messages.
-     * @param message ReqSetHostSalveMode message or plain object to encode
+     * Encodes the specified ReqSetHostSlaveMode message, length delimited. Does not implicitly {@link ReqSetHostSlaveMode.verify|verify} messages.
+     * @param message ReqSetHostSlaveMode message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encodeDelimited(message: IReqSetHostSalveMode, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encodeDelimited(message: IReqSetHostSlaveMode, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer.
+     * Decodes a ReqSetHostSlaveMode message from the specified reader or buffer.
      * @param reader Reader or buffer to decode from
      * @param [length] Message length if known beforehand
-     * @returns ReqSetHostSalveMode
+     * @returns ReqSetHostSlaveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqSetHostSalveMode;
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqSetHostSlaveMode;
 
     /**
-     * Decodes a ReqSetHostSalveMode message from the specified reader or buffer, length delimited.
+     * Decodes a ReqSetHostSlaveMode message from the specified reader or buffer, length delimited.
      * @param reader Reader or buffer to decode from
-     * @returns ReqSetHostSalveMode
+     * @returns ReqSetHostSlaveMode
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqSetHostSalveMode;
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqSetHostSlaveMode;
 
     /**
-     * Verifies a ReqSetHostSalveMode message.
+     * Verifies a ReqSetHostSlaveMode message.
      * @param message Plain object to verify
      * @returns `null` if valid, otherwise the reason why it is not
      */
     public static verify(message: { [k: string]: any }): (string|null);
 
     /**
-     * Creates a ReqSetHostSalveMode message from a plain object. Also converts values to their respective internal types.
+     * Creates a ReqSetHostSlaveMode message from a plain object. Also converts values to their respective internal types.
      * @param object Plain object
-     * @returns ReqSetHostSalveMode
+     * @returns ReqSetHostSlaveMode
      */
-    public static fromObject(object: { [k: string]: any }): ReqSetHostSalveMode;
+    public static fromObject(object: { [k: string]: any }): ReqSetHostSlaveMode;
 
     /**
-     * Creates a plain object from a ReqSetHostSalveMode message. Also converts values to other types if specified.
-     * @param message ReqSetHostSalveMode
+     * Creates a plain object from a ReqSetHostSlaveMode message. Also converts values to other types if specified.
+     * @param message ReqSetHostSlaveMode
      * @param [options] Conversion options
      * @returns Plain object
      */
-    public static toObject(message: ReqSetHostSalveMode, options?: $protobuf.IConversionOptions): { [k: string]: any };
+    public static toObject(message: ReqSetHostSlaveMode, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
     /**
-     * Converts this ReqSetHostSalveMode to JSON.
+     * Converts this ReqSetHostSlaveMode to JSON.
      * @returns JSON object
      */
     public toJSON(): { [k: string]: any };
 
     /**
-     * Gets the default type url for ReqSetHostSalveMode
+     * Gets the default type url for ReqSetHostSlaveMode
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */

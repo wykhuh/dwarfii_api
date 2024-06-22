@@ -92,7 +92,7 @@ export function messageSystemSetCpuMode(mode) {
  */
 export function messageSystemSetHostSlaveMode(mode) {
     let module_id = Dwarfii_Api.ModuleId.MODULE_SYSTEM;
-    let interface_id = Dwarfii_Api.DwarfCMD.CMD_SYSTEM_SET_HOST_MODE;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_SYSTEM_SET_HOSTSLAVE_MODE;
     let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
     // Obtain a message class
     const cmdClass = cmdMapping[interface_id];

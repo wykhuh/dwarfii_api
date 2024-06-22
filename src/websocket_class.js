@@ -253,7 +253,7 @@ export class WebSocketHandler {
           }
           // Cleanup event handlers after disconnection
           await this.cleanup();
-          if (new_socket) {
+          if (false && new_socket) {
             new_socket.onopen = null;
             new_socket.onerror = null;
             new_socket.onclose = null;
@@ -773,7 +773,7 @@ export class WebSocketHandler {
     console.log("WebSocketHandler close ping");
     await this.wait_ping_stop();
     // Remove event listeners during cleanup
-    this.cleanup_socket();
+    await this.cleanup_socket();
     await sleep(2000);
     let stop_try_reconnect = false;
     if (initial_running) {
