@@ -31,8 +31,10 @@ export const errorTxtMapping: {
     13301: string;
     13302: string;
     13800: string;
+    14504: string;
     14518: string;
     14519: string;
+    14520: string;
     14900: string;
     14901: string;
     15100: string;

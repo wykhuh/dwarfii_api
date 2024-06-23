@@ -220,8 +220,10 @@ enum DwarfErrorCode {
 
     CODE_RGB_POWER_UART_INIT_FAILED = -13800; // Serial port Initialization failed
 
+    CODE_STEP_MOTOR_INVALID_PARAMETER_ID = -14504; // Motor Invalid Id Parameter
     CODE_STEP_MOTOR_LIMIT_POSITION_WARNING = -14518; // GOTO limit warning
     CODE_STEP_MOTOR_LIMIT_POSITION_HITTED = -14519; // Star collision limit
+    CODE_STEP_MOTOR_POSITION_NEED_RESET = -14520; // Motor Position need Reset
 
     CODE_TRACK_TRACKER_INITING = -14900; // Tracking is initializing
     CODE_TRACK_TRACKER_FAILED = -14901; // Trace failed
