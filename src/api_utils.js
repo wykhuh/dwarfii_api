@@ -41,6 +41,27 @@ export function setDwarfClientID(clientID) {
   }
 }
 
+var DwarfDeviceID = 1; // DWARF II
+
+/** Set Dwarf deviceID value upon value return by the dwarf
+ * @param {number} deviceID
+ * @returns {boolean}
+ */
+export function setDwarfDeviceID(deviceID) {
+  // Check if the value is a number
+  if (typeof deviceID !== "number") {
+    return false;
+  }
+
+  // Test if the deviceID greater than 0
+  if (deviceID > 0) {
+    DwarfDeviceID = deviceID;
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}
@@ -117,7 +138,7 @@ export function createPacket(
 ) {
   let major_version = Dwarfii_Api.WsMajorVersion.WS_MAJOR_VERSION_NUMBER;
   let minor_version = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER;
-  let device_id = 1; // DWARF II
+  let device_id = DwarfDeviceID;
   // message
   let message_buffer = undefined;
   message_buffer = class_message.encode(message).finish();

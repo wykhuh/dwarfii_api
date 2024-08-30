@@ -58,6 +58,12 @@ export class WebSocketHandler {
      */
     setNewIpDwarf(IPDwarf: string): Promise<void>;
     /**
+     * Set the device ID of the dwarf connected (readen from the dwarf or from the config file on the dwarf)
+     * @param {number} deviceIdDwarf ; Set the device ID of the dwarf connected.
+     * @returns {boolean} status
+     */
+    setDeviceIdDwarf(deviceIdDwarf: number): boolean;
+    /**
      * Set the intervall of the build in Ping function defult is 10s
      * @param {number} IntervalInSecond ; in Seconds
      * @returns {void}

@@ -13,7 +13,7 @@ function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 import { wsURL } from "./api_codes.js";
-import { analyzePacket } from "./api_utils.js";
+import { setDwarfDeviceID, analyzePacket } from "./api_utils.js";
 class Queue {
     constructor(...elements) {
         // Initializing the queue with given arguments
@@ -110,6 +110,22 @@ export class WebSocketHandler {
             this.IPDwarf = IPDwarf;
             console.debug("websocket_class : new Ip : ", this.IPDwarf);
         });
+    }
+    /**
+     * Set the device ID of the dwarf connected (readen from the dwarf or from the config file on the dwarf)
+     * @param {number} deviceIdDwarf ; Set the device ID of the dwarf connected.
+     * @returns {boolean} status
+     */
+    setDeviceIdDwarf(deviceIdDwarf) {
+        console.debug("websocket_class : setDeviceIdDwarf : ", deviceIdDwarf);
+        if (setDwarfDeviceID(deviceIdDwarf)) {
+            console.debug("websocket_class : success setting the device ID of the dwarf : ", deviceIdDwarf);
+            return true;
+        }
+        else {
+            console.error("websocket_class : error setting the device ID of the dwarf : ", deviceIdDwarf);
+            return false;
+        }
     }
     /**
      * Set the intervall of the build in Ping function defult is 10s

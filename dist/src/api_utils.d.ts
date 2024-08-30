@@ -3,6 +3,11 @@
  * @returns {boolean}
  */
 export function setDwarfClientID(clientID: string): boolean;
+/** Set Dwarf deviceID value upon value return by the dwarf
+ * @param {number} deviceID
+ * @returns {boolean}
+ */
+export function setDwarfDeviceID(deviceID: number): boolean;
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}
