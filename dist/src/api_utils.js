@@ -195,6 +195,14 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     console.debug(`notifyClass: ${notifyClass}`);
     const notifyResponseClass = notifyResponseMapping[WsPacket_message.cmd];
     console.debug(`notifyResponseClass: ${notifyResponseClass}`);
+    if ((WsPacket_message.type == 0 && cmdClass === undefined) ||
+        (WsPacket_message.type == 1 && responseClass === undefined) ||
+        (WsPacket_message.type == 2 && notifyClass === undefined) ||
+        (WsPacket_message.type == 3 && notifyResponseClass === undefined)) {
+        // Error cmd not known, ignore it
+        console.error(`Ignore Command Message Unknown: ${WsPacket_message.cmd}`);
+        return JSON.stringify("");
+    }
     // Automatic Analyse Data
     if (WsPacket_message.type == 0) {
         // Request
