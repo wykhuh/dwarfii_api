@@ -239,7 +239,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
   ) {
     // Error cmd not known, ignore it
     console.error(`Ignore Command Message Unknown: ${WsPacket_message.cmd}`);
-    return JSON.stringify("");
+    return JSON.stringify({});
   }
 
   // Automatic Analyse Data
