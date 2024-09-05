@@ -201,7 +201,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
         (WsPacket_message.type == 3 && notifyResponseClass === undefined)) {
         // Error cmd not known, ignore it
         console.error(`Ignore Command Message Unknown: ${WsPacket_message.cmd}`);
-        return JSON.stringify("");
+        return JSON.stringify({});
     }
     // Automatic Analyse Data
     if (WsPacket_message.type == 0) {
