@@ -560,3 +560,46 @@ export function messageCameraWideSetAllParams(
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
+
+/**
+ * 3.9.11 Start recording
+ * Create Encoded Packet for the command CMD_CAMERA_WIDE_START_RECORD
+ * @returns {Uint8Array}
+ */
+export function messageCameraWideStartRecord() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_WIDE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_WIDE_START_RECORD;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain classname depending of the command
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.9.12 Stop recording
+ * Create Encoded Packet for the command CMD_CAMERA_WIDE_STOP_RECORD
+ * @returns {Uint8Array}
+ */
+export function messageCameraWideStopRecord() {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_WIDE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_WIDE_STOP_RECORD;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain classname depending of the command
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({});
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}

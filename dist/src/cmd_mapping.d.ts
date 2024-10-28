@@ -63,6 +63,8 @@ export const cmdMapping: {
     11010: string;
     11011: string;
     11012: string;
+    11016: string;
+    11017: string;
     12000: string;
     12001: string;
     12002: string;
@@ -92,6 +94,8 @@ export const cmdMapping: {
     12026: string;
     12027: string;
     12028: string;
+    12030: string;
+    12031: string;
     13000: string;
     13001: string;
     13002: string;
@@ -189,6 +193,8 @@ export const responseMapping: {
     11010: string;
     11011: string;
     11012: string;
+    11016: string;
+    11017: string;
     12000: string;
     12001: string;
     12002: string;
@@ -218,6 +224,8 @@ export const responseMapping: {
     12026: string;
     12027: string;
     12028: string;
+    12030: string;
+    12031: string;
     13000: string;
     13001: string;
     13002: string;
@@ -283,6 +291,9 @@ export const notifyMapping: {
     15228: string;
     15229: string;
     15230: string;
+    15235: string;
+    15236: string;
+    15237: string;
 };
 export const notifyResponseMapping: {
     10000: string;
@@ -339,6 +350,8 @@ export const notifyResponseMapping: {
     11010: string;
     11011: string;
     11012: string;
+    11016: string;
+    11017: string;
     12000: string;
     12001: string;
     12002: string;
@@ -368,6 +381,8 @@ export const notifyResponseMapping: {
     12026: string;
     12027: string;
     12028: string;
+    12030: string;
+    12031: string;
     13000: string;
     13001: string;
     13002: string;

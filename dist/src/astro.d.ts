@@ -87,4 +87,16 @@ export function messageAstroStopCaptureRawDark(): Uint8Array;
  * @returns {Uint8Array}
  */
 export function messageAstroGoLive(): Uint8Array;
+/**
+ * 3.10.15 Start Wide stack
+ * Create Encoded Packet for the command CMD_ASTRO_START_CAPTURE_RAW_WIDE_LIVE_STACKING
+ * @returns {Uint8Array}
+ */
+export function messageAstroStartCaptureRawWideLiveStacking(): Uint8Array;
+/**
+ * 3.10.16 stop stack
+ * Create Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_WIDE_LIVE_STACKING
+ * @returns {Uint8Array}
+ */
+export function messageAstroStopCaptureRawWideLiveStacking(): Uint8Array;
 //# sourceMappingURL=astro.d.ts.map

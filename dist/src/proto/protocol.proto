@@ -80,6 +80,9 @@ enum DwarfCMD {
     CMD_ASTRO_START_TRACK_SPECIAL_TARGET = 11011; // Start tracking the sun and moon
     CMD_ASTRO_STOP_TRACK_SPECIAL_TARGET = 11012; // Stop tracking the sun and moon
 
+    CMD_ASTRO_START_CAPTURE_RAW_WIDE_LIVE_STACKING = 11016; // Start wide stacking
+    CMD_ASTRO_STOP_CAPTURE_RAW_WIDE_LIVE_STACKING = 11017; // Stop wide overlay
+
     CMD_CAMERA_WIDE_OPEN_CAMERA = 12000; // Turn on the camera
     CMD_CAMERA_WIDE_CLOSE_CAMERA = 12001; // Turn off the camera
     CMD_CAMERA_WIDE_SET_EXP_MODE = 12002; // Set exposure mode
@@ -109,6 +112,9 @@ enum DwarfCMD {
     CMD_CAMERA_WIDE_STOP_TIMELAPSE_PHOTO = 12026; // Stop time-lapse photography
     CMD_CAMERA_WIDE_GET_ALL_PARAMS = 12027; // Get all parameters
     CMD_CAMERA_WIDE_SET_ALL_PARAMS = 12028; // Set all parameters
+
+    CMD_CAMERA_WIDE_START_RECORD = 12030; // Start wide recording
+    CMD_CAMERA_WIDE_STOP_RECORD = 12031; // Stop wide recording
 
     CMD_SYSTEM_SET_TIME = 13000; // Set the system time
     CMD_SYSTEM_SET_TIME_ZONE = 13001; // Set the time zone
@@ -175,6 +181,10 @@ enum DwarfCMD {
     CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL = 15228; // Sun and moon tracking status
     CMD_NOTIFY_POWER_OFF = 15229; // Shutdown notification
     CMD_NOTIFY_NEW_MEDIA_CREATED = 15230; // New Media Created ??
+
+    CMD_NOTIFY_WIDE_RECORD_TIME = 15235; // Wide Recording time
+    CMD_NOTIFY_STATE_CAPTURE_RAW_WIDE_LIVE_STACKING = 15236; // Astronomical overlay wide shooting status
+    CMD_NOTIFY_PROGRASS_CAPTURE_RAW_WIDE_LIVE_STACKING = 15237; // Astronomical overlay wide shooting progress
 
     CMD_PANORAMA_START_GRID = 15500; // Start panorama
     CMD_PANORAMA_STOP = 15501; // Stop panorama

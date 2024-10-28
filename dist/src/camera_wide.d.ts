@@ -178,4 +178,16 @@ export function messageCameraWideStopTimeLapsePhoto(): Uint8Array;
  * @returns {Uint8Array}
  */
 export function messageCameraWideSetAllParams(exp_mode: number, exp_index: number, gain_mode: number, gain_index: number, ircut_value: number, wb_mode: number, wb_index_type: number, wb_index: number, brightness: number, contrast: number, hue: number, saturation: number, sharpness: number, jpg_quality: number): Uint8Array;
+/**
+ * 3.9.11 Start recording
+ * Create Encoded Packet for the command CMD_CAMERA_WIDE_START_RECORD
+ * @returns {Uint8Array}
+ */
+export function messageCameraWideStartRecord(): Uint8Array;
+/**
+ * 3.9.12 Stop recording
+ * Create Encoded Packet for the command CMD_CAMERA_WIDE_STOP_RECORD
+ * @returns {Uint8Array}
+ */
+export function messageCameraWideStopRecord(): Uint8Array;
 //# sourceMappingURL=camera_wide.d.ts.map

@@ -52,4 +52,5 @@ export function createPacket(message: any, class_message: any, module_id: number
  */
 export function analyzePacket(message_buffer: ArrayBuffer | string, input_data_log?: boolean): string;
 export const Dwarfii_Api: any;
+export const DwarfClientID: string;
 //# sourceMappingURL=api_utils.d.ts.map

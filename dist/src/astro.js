@@ -272,3 +272,41 @@ export function messageAstroGoLive() {
     // return encoded Message Packet
     return createPacket(message, class_message, module_id, interface_id, type_id);
 }
+/**
+ * 3.10.15 Start Wide stack
+ * Create Encoded Packet for the command CMD_ASTRO_START_CAPTURE_RAW_WIDE_LIVE_STACKING
+ * @returns {Uint8Array}
+ */
+export function messageAstroStartCaptureRawWideLiveStacking() {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_START_CAPTURE_RAW_WIDE_LIVE_STACKING;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({});
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 3.10.16 stop stack
+ * Create Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_WIDE_LIVE_STACKING
+ * @returns {Uint8Array}
+ */
+export function messageAstroStopCaptureRawWideLiveStacking() {
+    let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
+    let interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_STOP_CAPTURE_RAW_WIDE_LIVE_STACKING;
+    let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+    // Obtain classname depending of the command
+    // Obtain a message class
+    const cmdClass = cmdMapping[interface_id];
+    let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+    // Encode message
+    let message = class_message.create({});
+    console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
+    // return encoded Message Packet
+    return createPacket(message, class_message, module_id, interface_id, type_id);
+}

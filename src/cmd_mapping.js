@@ -69,6 +69,9 @@ export const cmdMapping = {
   11011: "ReqTrackSpecialTarget", // Start tracking the sun and moon
   11012: "ReqStopTrackSpecialTarget", // Stop tracking the sun and moon
 
+  11016: "ReqCaptureRawLiveStacking", // Start wide stacking
+  11017: "ReqStopCaptureRawLiveStacking", // Stop wide overlay
+
   12000: "ReqOpenCamera", // Turn on the camera
   12001: "ReqCloseCamera", // Turn off the camera
   12002: "ReqSetExpMode", // Set exposure mode
@@ -98,6 +101,9 @@ export const cmdMapping = {
   12026: "ReqStopTimeLapse", // Stop time-lapse photography
   12027: "ReqGetAllParams", // Get all parameters
   12028: "ReqSetAllParams", // Set all parameters
+
+  12030: "ReqStartRecord", // Start recording
+  12031: "ReqStopRecord", // Stop recording
 
   13000: "ReqSetTime", // Set the system time
   13001: "ReqSetTimezone", // Set the time zone
@@ -206,6 +212,9 @@ export const responseMapping = {
   11011: "ComResponse", // Start tracking the sun and moon
   11012: "ComResponse", // Stop tracking the sun and moon
 
+  11016: "ComResponse", // Start wide stacking
+  11017: "ComResponse", // Stop wide overlay
+
   12000: "ComResponse", // Turn on the camera
   12001: "ComResponse", // Turn off the camera
   12002: "ComResponse", // Set exposure mode
@@ -235,6 +244,9 @@ export const responseMapping = {
   12026: "ComResponse", // Stop time-lapse photography
   12027: "ResGetAllParams", // Get all parameters
   12028: "ComResponse", // Set all parameters
+
+  12030: "ComResponse", // Start wide recording
+  12031: "ComResponse", // Stop wide recording
 
   13000: "ComResponse", // Set the system time
   13001: "ComResponse", // Set the time zone
@@ -307,6 +319,10 @@ export const notifyMapping = {
   15228: "ResNotifyStateAstroTrackingSpecial", // Sun and moon tracking status
   15229: "ResNotifyPowerOff", // Shutdown notification
   15230: "ResNotifyNewMediaCreated", // New Media Created
+
+  15235: "ResNotifyRecordTime", // Wide Recording time
+  15236: "ResNotifyOperationState", // Astronomical overlay wide shooting status
+  15237: "ResNotifyProgressCaptureRawLiveStacking", // Astronomical overlay wide shooting progress
 };
 
 export const notifyResponseMapping = {
@@ -366,6 +382,9 @@ export const notifyResponseMapping = {
   11011: "ComResponse", // Start tracking the sun and moon
   11012: "ComResponse", // Stop tracking the sun and moon
 
+  11016: "ComResponse", // Start wide stacking
+  11017: "ComResponse", // Stop wide overlay
+
   12000: "ComResponse", // Turn on the camera
   12001: "ComResponse", // Turn off the camera
   12002: "ComResponse", // Set exposure mode
@@ -395,6 +414,9 @@ export const notifyResponseMapping = {
   12026: "ComResponse", // Stop time-lapse photography
   12027: "ResGetAllParams", // Get all parameters
   12028: "ComResponse", // Set all parameters
+
+  12030: "ComResponse", // Start wide recording
+  12031: "ComResponse", // Stop wide recording
 
   13000: "ComResponse", // Set the system time
   13001: "ComResponse", // Set the time zone

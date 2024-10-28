@@ -4,7 +4,7 @@ import $root from "./protobuf/protobuf.js";
 export const Dwarfii_Api = $root;
 import { cmdMapping, responseMapping, notifyMapping, notifyResponseMapping, getClassStateMappings, getClassModeMappings, } from "./cmd_mapping.js";
 import { cmdTxtMapping, errorTxtMapping, stateTxtMapping, } from "./txt_mapping.js";
-var DwarfClientID = "0000DAF2-0000-1000-8000-00805F9B34FB";
+export var DwarfClientID = "0000DAF2-0000-1000-8000-00805F9B34FB";
 /** Set clientID value if need : defaut is "0000DAF2-0000-1000-8000-00805F9B34FB"
  * @param {string} clientID
  * @returns {boolean}
