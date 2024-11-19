@@ -20,4 +20,19 @@ message ReqPauseTrack {
 message ReqContinueTrack {
 }
 
+// 开始哨兵模式
+message ReqStartSentryMode {
+    int32 mode = 1;
+}
+
+// 停止哨兵模式
+message ReqStopSentryMode {
+}
+
+message ReqMOTTrack {
+}
+
+message ReqMOTTrackOne {
+    int32 id = 1;
+}
 

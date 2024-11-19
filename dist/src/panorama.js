@@ -10,11 +10,9 @@ import { cmdMapping } from "./cmd_mapping.js";
 /**
  * 3.15.3 Start Panorama
  * Create Encoded Packet for the command CMD_PANORAMA_START_GRID
- * @param {number} rows ; // number of rows
- * @param {number} cols ; // number of cols
  * @returns {Uint8Array}
  */
-export function messagePanoramaStartGrid(rows, cols) {
+export function messagePanoramaStartGrid() {
     let module_id = Dwarfii_Api.ModuleId.MODULE_PANORAMA;
     let interface_id = Dwarfii_Api.DwarfCMD.CMD_PANORAMA_START_GRID;
     let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
@@ -23,7 +21,7 @@ export function messagePanoramaStartGrid(rows, cols) {
     const cmdClass = cmdMapping[interface_id];
     let class_message = eval(`Dwarfii_Api.${cmdClass}`);
     // Encode message
-    let message = class_message.create({ rows: rows, cols: cols });
+    let message = class_message.create({});
     console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
     // return encoded Message Packet
     return createPacket(message, class_message, module_id, interface_id, type_id);

@@ -12,6 +12,7 @@ enum ModuleId {
     MODULE_FOCUS = 8; // 15000-15099 Focusing module
     MODULE_NOTIFY = 9; // 15200-15499 Notification module
     MODULE_PANORAMA = 10; // 15500-15599 Panoramic module
+    MODULE_SHOOTING_SCHEDULE = 13; // 16100-16300 Shooting schedule module
 }
 
 enum MessageTypeId {
@@ -66,6 +67,9 @@ enum DwarfCMD {
     CMD_CAMERA_TELE_GET_SYSTEM_WORKING_STATE = 10039; // Get the working status of the whole machine
     CMD_CAMERA_TELE_SET_JPG_QUALITY = 10040; // Set jpg preview quality
 
+    CMD_CAMERA_TELE_PHOTO_RAW = 10041; // Shoot RAW image
+    CMD_CAMERA_TELE_SET_RTSP_BITRATE_TYPE = 10042; // Set rtsp preview bit rate type
+
     CMD_ASTRO_START_CALIBRATION = 11000; // Start calibration
     CMD_ASTRO_STOP_CALIBRATION = 11001; // Stop calibration
     CMD_ASTRO_START_GOTO_DSO = 11002; // Start GOTO Deep Space Object
@@ -80,8 +84,23 @@ enum DwarfCMD {
     CMD_ASTRO_START_TRACK_SPECIAL_TARGET = 11011; // Start tracking the sun and moon
     CMD_ASTRO_STOP_TRACK_SPECIAL_TARGET = 11012; // Stop tracking the sun and moon
 
-    CMD_ASTRO_START_CAPTURE_RAW_WIDE_LIVE_STACKING = 11016; // Start wide stacking
-    CMD_ASTRO_STOP_CAPTURE_RAW_WIDE_LIVE_STACKING = 11017; // Stop wide overlay
+    CMD_ASTRO_START_ONE_CLICK_GOTO_DSO = 11013; // One-click GOTO deep space celestial body
+    CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTEM = 11014; // One-click GOTO solar system target
+    CMD_ASTRO_STOP_ONE_CLICK_GOTO = 11015; // Stop one-click GOTO
+    CMD_ASTRO_START_WIDE_CAPTURE_LIVE_STACKING = 11016; // Start wide-angle overlay
+    CMD_ASTRO_STOP_WIDE_CAPTURE_LIVE_STACKING = 11017; // Stop wide-angle overlay
+    CMD_ASTRO_START_EQ_SOLVING = 11018; // Start EQ verification
+    CMD_ASTRO_STOP_EQ_SOLVING = 11019; // Stop EQ verification
+    CMD_ASTRO_WIDE_GO_LIVE = 11020; // Wide-angle GO LIVE interface
+
+    CMD_ASTRO_START_CAPTURE_RAW_DARK_WITH_PARAM = 11021; // Start shooting the dark field with specified parameters (manually set exposure, gain, binning).
+    CMD_ASTRO_STOP_CAPTURE_RAW_DARK_WITH_PARAM = 11022; // Stop shooting the dark field with specified parameters
+    CMD_ASTRO_GET_DARK_FRAME_LIST = 11023; // Query the list of recorded dark scenes
+    CMD_ASTRO_DEL_DARK_FRAME_LIST = 11024; // Delete the specified dark field list
+    CMD_ASTRO_START_CAPTURE_WIDE_RAW_DARK_WITH_PARAM = 11025; // Start shooting wide-angle dark field with specified parameters (manually set exposure and gain. Binning is fixed to 1 internally, setting does not work).
+    CMD_ASTRO_STOP_CAPTURE_WIDE_RAW_DARK_WITH_PARAM = 11026; // Stop shooting dark field with wide-angle specified parameters
+    CMD_ASTRO_GET_WIDE_DARK_FRAME_LIST = 11027; // Query the list of wide-angle dark scenes taken
+    CMD_ASTRO_DEL_WIDE_DARK_FRAME_LIST = 11028; // Delete the specified wide-angle dark field list
 
     CMD_CAMERA_WIDE_OPEN_CAMERA = 12000; // Turn on the camera
     CMD_CAMERA_WIDE_CLOSE_CAMERA = 12001; // Turn off the camera
@@ -120,7 +139,7 @@ enum DwarfCMD {
     CMD_SYSTEM_SET_TIME_ZONE = 13001; // Set the time zone
     CMD_SYSTEM_SET_MTP_MODE = 13002; // Set MTP mode
     CMD_SYSTEM_SET_CPU_MODE = 13003; // Set CPU mode
-    CMD_SYSTEM_SET_HOSTSLAVE_MODE = 13004; // Set HOST mode
+    CMD_SYSTEM_SET_MASTERLOCK = 13004; // Set HOST mode
 
     CMD_RGB_POWER_OPEN_RGB = 13500; // Turn on the ring light
     CMD_RGB_POWER_CLOSE_RGB = 13501; // Turn off the ring light
@@ -140,8 +159,21 @@ enum DwarfCMD {
     CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP = 14008; // Stop joystick
     CMD_STEP_MOTOR_SERVICE_DUAL_CAMERA_LINKAGE = 14009; // Dual camera linkage
 
+    CMD_STEP_MOTOR_RUN_IN_PULSE = 14010; // Motor run in pulse
+    CMD_STEP_MOTOR_GET_POSITION = 14011; // Motor get Position
+
     CMD_TRACK_START_TRACK = 14800; // Started tracking
     CMD_TRACK_STOP_TRACK = 14801; // Stop tracking
+
+    CMD_SENTRY_MODE_START = 14802; // Start Sentinel Mode (Pack
+    CMD_SENTRY_MODE_STOP = 14803; // Stop Sentinel Mode
+    CMD_MOT_START = 14804; // Start "Multi-Object Tracking" feature
+    CMD_MOT_TRACK_ONE = 14805; // Telephoto: "Multi-Object Tracking" starts tracking a target (the firmware will return an identification box and ID, and track the target according to the user's click confirmation)
+    CMD_UFOTRACK_MODE_START = 14806; // Start sentinel UFO mode
+    CMD_UFOTRACK_MODE_STOP = 14807; // Stop Sentinel UFO Mode
+    CMD_MOT_WIDE_TRACK_ONE = 14808; // Wide-angle: "Multi-Object Tracking" starts tracking a specific target (firmware will return an identification box and ID, confirm tracking target based on user clicks)
+    CMD_WIDE_TELE_TRACK_SWITCH = 14809; // Object Detection with 30 classes for post-production non-sentinel mode. Choose between wide-angle and telephoto tracking button instructions
+    CMD_UFO_HAND_AOTO_MODE = 14810; // Used for post-UFO mode selection manual or automatic
 
     CMD_FOCUS_AUTO_FOCUS = 15000; // Normal mode autofocus
     CMD_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15001; // Manual single-step focusing
@@ -180,11 +212,30 @@ enum DwarfCMD {
     CMD_NOTIFY_CPU_MODE = 15227; // CPU mode
     CMD_NOTIFY_STATE_ASTRO_TRACKING_SPECIAL = 15228; // Sun and moon tracking status
     CMD_NOTIFY_POWER_OFF = 15229; // Shutdown notification
-    CMD_NOTIFY_NEW_MEDIA_CREATED = 15230; // New Media Created ??
+    CMD_NOTIFY_ALBUM_UPDATE = 15230; // Album update notification
+    CMD_NOTIFY_SENTRY_MODE_STATE = 15231; // Sentinel mode status
+    CMD_NOTIFY_SENTRY_MODE_TRACK_RESULT = 15232; // Sentinel mode tracking box result notification
+    CMD_NOTIFY_STATE_ASTRO_ONE_CLICK_GOTO = 15233; // One-click GOTO status
+    CMD_NOTIFY_STREAM_TYPE = 15234; // Image type notification
+    CMD_NOTIFY_WIDE_RECORD_TIME = 15235; // Wide-angle video recording time
+    CMD_NOTIFY_STATE_WIDE_CAPTURE_RAW_LIVE_STACKING = 15236; // Wide-angle astronomical overlay shooting status
+    CMD_NOTIFY_PROGRASS_WIDE_CAPTURE_RAW_LIVE_STACKING = 15237; // Progress of wide-angle astronomical overlay photography
 
-    CMD_NOTIFY_WIDE_RECORD_TIME = 15235; // Wide Recording time
-    CMD_NOTIFY_STATE_CAPTURE_RAW_WIDE_LIVE_STACKING = 15236; // Astronomical overlay wide shooting status
-    CMD_NOTIFY_PROGRASS_CAPTURE_RAW_WIDE_LIVE_STACKING = 15237; // Astronomical overlay wide shooting progress
+    CMD_NOTIFY_MULTI_TRACK_RESULT = 15238; // Multi-Object Tracking Result Notification
+    CMD_NOTIFY_EQ_SOLVING_STATE = 15239; // EQ check status
+    CMD_NOTIFY_UFO_MODE_STATE = 15240; // Sentinel-UFO Mode Status
+    CMD_NOTIFY_TELE_LONG_EXP_PROGRESS = 15241; // Telephoto long exposure progress
+    CMD_NOTIFY_WIDE_LONG_EXP_PROGRESS = 15242; // Wide-angle long exposure progress
+    CMD_NOTIFY_TEMPERATURE = 15243; // Movement temperature
+    CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244; // 
+    CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245; // 
+    CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246; // 
+    CMD_NOTIFY_STATE_CAPTURE_WIDE_RAW_DARK = 15247; // Wide-angle dark field shooting state
+    CMD_NOTIFY_SHOOTING_SCHEDULE_RESULT_AND_STATE = 15248; // 
+    CMD_NOTIFY_SHOOTING_TASK_STATE = 15249; // 
+    CMD_NOTIFY_SKY_SEACHER_STATE = 15250; // Sky detection status
+    CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
+    CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
 
     CMD_PANORAMA_START_GRID = 15500; // Start panorama
     CMD_PANORAMA_STOP = 15501; // Stop panorama
@@ -216,6 +267,9 @@ enum DwarfErrorCode {
     CODE_ASTRO_NEED_GOTO = -11513; // No GOTO
     CODE_ASTRO_NEED_ADJUST_SHOOT_PARAM = -11514; // Parameters are not suitable
     
+    CODE_ASTRO_EQ_SOLVING_FAILED = -11516; // EQ calculation failed (only calculation failed to return)
+    CODE_ASTRO_SKY_SEARCH_FAILED = -11517; // Sky detection failed
+
     CODE_CAMERA_WIDE_OPENED = -12500; // Wide-angle camera turned on
     CODE_CAMERA_WIDE_CLOSED = -12501; // The wide-angle camera is turned off
     CODE_CAMERA_WIDE_CANNOT_FOUND = -12502; // Can't find the camera
@@ -223,6 +277,7 @@ enum DwarfErrorCode {
     CODE_CAMERA_WIDE_CLOSE_FAILED = -12504; // Failed to turn off camera
     CODE_CAMERA_WIDE_SET_ISP_FAILED = -12505; // Failed to set ISP parameters
     CODE_CAMERA_WIDE_PHOTOGRAPHING = -12506; // Taking pictures
+    CODE_CAMERA_WIDE_EXP_TOO_LONG = -12508; // The exposure time is too long, and recording is not supported.
 
     CODE_SYSTEM_SET_TIME_FAILED = -13300; // Set time failed
     CODE_SYSTEM_SET_TIMEZONE_FAILED = -13301; // Failed to set time zone

@@ -6,6 +6,7 @@ export function telephotoURL(IP: string): string;
 export function rawPreviewURL(IP: string): string;
 export function firmwareVersion(IP: string): string;
 export function getDefaultParamsConfig(IP: string): string;
+export function deviceInfo(IP: string): string;
 export const modeAuto: 0;
 export const modeManual: 1;
 export const autofocusGlobal: 0;

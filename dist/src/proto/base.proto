@@ -7,7 +7,7 @@ enum WsMajorVersion {
 
 enum WsMinorVersion {
     WS_MINOR_VERSION_UNKNOWN = 0;
-    WS_MINOR_VERSION_NUMBER = 2;
+    WS_MINOR_VERSION_NUMBER = 9;
 }
 
 message WsPacket {
@@ -32,6 +32,11 @@ message ComResWithInt {
 
 message ComResWithDouble {
     double value = 1;
+    int32 code = 2;
+}
+
+message ComResWithString {
+    string str = 1;
     int32 code = 2;
 }
 

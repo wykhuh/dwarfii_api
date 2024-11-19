@@ -55,6 +55,9 @@ export const cmdMapping = {
   10039: "ReqGetSystemWorkingState", // Get the working status of the whole machine
   10040: "ReqSetJpgQuality", // Set jpg preview quality
 
+  10041: "ReqPhotoRaw", // Shoot RAW image
+  10042: "ReqSetRtspBitRateType", // Set rtsp preview bit rate type
+
   11000: "ReqStartCalibration", // Start calibration
   11001: "ReqStopCalibration", // Stop calibration
   11002: "ReqGotoDSO", // Start GOTO Deep Space Object
@@ -69,8 +72,23 @@ export const cmdMapping = {
   11011: "ReqTrackSpecialTarget", // Start tracking the sun and moon
   11012: "ReqStopTrackSpecialTarget", // Stop tracking the sun and moon
 
-  11016: "ReqCaptureRawLiveStacking", // Start wide stacking
-  11017: "ReqStopCaptureRawLiveStacking", // Stop wide overlay
+  11013: "ReqOneClickGotoDSO", // One-click GOTO deep space celestial body
+  11014: "ReqOneClickGotoSolarSystem", // One-click GOTO solar system target
+  11015: "ReqStopOneClickGoto", // Stop one-click GOTO
+  11016: "ReqCaptureWideRawLiveStacking", // Start wide-angle overlay
+  11017: "ReqStopCaptureWideRawLiveStacking", // Stop wide-angle overlay
+  11018: "ReqStartEqSolving", // Start EQ verification
+  11019: "ReqStopEqSolving", // Stop EQ verification
+  11020: "ReqGoLive", // Wide-angle GO LIVE interface
+
+  11021: "ReqCaptureDarkFrame", // Start shooting the dark field with specified parameters (manually set exposure, gain, binning).
+  11022: "ReqStopCaptureDarkFrame", // Stop shooting the dark field with specified parameters
+  11023: "ReqCheckDarkFrame", // Query the list of recorded dark scenes
+  11024: "ReqDelDarkFrame", // Delete the specified dark field list
+  11025: "ReqCaptureWideDarkFrame", // Start shooting wide-angle dark field with specified parameters (manually set exposure and gain. Binning is fixed to 1 internally, setting does not work).
+  11026: "ReqStopCaptureWideDarkFrame", // Stop shooting dark field with wide-angle specified parameters
+  11027: "ReqCheckWideDarkFrame", // Query the list of wide-angle dark scenes taken
+  11028: "ReqDelWideDarkFrame", // Delete the specified wide-angle dark field list
 
   12000: "ReqOpenCamera", // Turn on the camera
   12001: "ReqCloseCamera", // Turn off the camera
@@ -102,14 +120,14 @@ export const cmdMapping = {
   12027: "ReqGetAllParams", // Get all parameters
   12028: "ReqSetAllParams", // Set all parameters
 
-  12030: "ReqStartRecord", // Start recording
-  12031: "ReqStopRecord", // Stop recording
+  12030: "ReqStartRecord", // Start wide recording
+  12031: "ReqStopRecord", // Stop wide recording
 
   13000: "ReqSetTime", // Set the system time
   13001: "ReqSetTimezone", // Set the time zone
   13002: "ReqSetMtpMode", // Set MTP mode
   13003: "ReqSetCpuMode", // Set CPU mode
-  13004: "ReqSetHostSlaveMode", // Set HOST SLAVE mode
+  13004: "ReqsetMasterLock", // Set HOST SLAVE mode
 
   13500: "ReqOpenRgb", // Turn on the ring light
   13501: "ReqCloseRgb", // Turn off the ring light
@@ -129,8 +147,19 @@ export const cmdMapping = {
   14008: "ReqMotorServiceJoystickStop", // Stop joystick
   14009: "ReqDualCameraLinkage", // Dual camera linkage
 
+  14010: "ReqMotorRunInPulse", // Motor run in pulse
+  14011: "ReqMotorGetPosition", // Motor get Position
+
   14800: "ReqStartTrack", // Started tracking
   14801: "ReqStopTrack", // Stop tracking
+
+  14802: "ReqStartSentryMode", // Start Sentinel Mode
+  14803: "ReqStopSentryMode", // Stop Sentinel Mode
+  14804: "ReqMOTTrack", // Start "Multi-Object Tracking" feature
+  14805: "ReqMOTTrackOne", // Telephoto: "Multi-Object Tracking" starts tracking a target (the firmware will return an identification box and ID, and track the target according to the user's click confirmation)
+  14806: "ReqStartSentryMode", // Start sentinel UFO mode
+  14807: "ReqStopSentryMode", // Stop Sentinel UFO Mode
+  14808: "ReqMOTTrackOne", // Wide-angle: "Multi-Object Tracking" starts tracking a specific target (firmware will return an identification box and ID, confirm tracking target based on user clicks)
 
   15000: "ReqNormalAutoFocus", // Normal mode autofocus
   15001: "ReqManualSingleStepFocus", // Manual single-step focusing
@@ -198,6 +227,9 @@ export const responseMapping = {
   10039: "ComResponse", // Get the working status of the whole machine
   10040: "ComResponse", // Set jpg preview quality
 
+  10041: "ComResponse", // Shoot RAW image
+  10042: "ComResponse", // Set rtsp preview bit rate type
+
   11000: "ComResponse", // Start calibration
   11001: "ComResponse", // Stop calibration
   11002: "ComResponse", // Start GOTO Deep Space Object
@@ -212,8 +244,23 @@ export const responseMapping = {
   11011: "ComResponse", // Start tracking the sun and moon
   11012: "ComResponse", // Stop tracking the sun and moon
 
-  11016: "ComResponse", // Start wide stacking
-  11017: "ComResponse", // Stop wide overlay
+  11013: "ResOneClickGoto ", // One-click GOTO deep space celestial body
+  11014: "ResOneClickGoto ", // One-click GOTO solar system target
+  11015: "ComResponse", // Stop one-click GOTO
+  11016: "ComResponse", // Start wide-angle overlay
+  11017: "ComResponse", // Stop wide-angle overlay
+  11018: "ResStartEqSolving ", // Start EQ verification
+  11019: "ComResponse", // Stop EQ verification
+  11020: "ComResponse", // Wide-angle GO LIVE interface
+
+  11021: "ComResponse", // Start shooting the dark field with specified parameters (manually set exposure, gain, binning).
+  11022: "ComResponse", // Stop shooting the dark field with specified parameters
+  11023: "ResGetDarkFrameInfoList", // Query the list of recorded dark scenes
+  11024: "ResDelDarkFrameList", // Delete the specified dark field list
+  11025: "ComResponse", // Start shooting wide-angle dark field with specified parameters (manually set exposure and gain. Binning is fixed to 1 internally, setting does not work).
+  11026: "ComResponse", // Stop shooting dark field with wide-angle specified parameters
+  11027: "ResGetWideDarkFrameInfoList", // Query the list of wide-angle dark scenes taken
+  11028: "ResDelWideDarkFrameList", // Delete the specified wide-angle dark field list
 
   12000: "ComResponse", // Turn on the camera
   12001: "ComResponse", // Turn off the camera
@@ -272,8 +319,18 @@ export const responseMapping = {
   14008: "ComResponse", // Stop joystick
   14009: "ComResponse", // Dual camera linkage
 
+  14010: "ResMotor", // Motor run in pulse
+  14011: "ResMotorPosition", // Motor get Position
+
   14800: "ComResponse", // Started tracking
   14801: "ComResponse", // Stop tracking
+  14802: "ComResponse", // Start Sentinel Mode
+  14803: "ComResponse", // Stop Sentinel Mode
+  14804: "ComResponse", // Start "Multi-Object Tracking" feature
+  14805: "ComResponse", // Telephoto: "Multi-Object Tracking" starts tracking a target (the firmware will return an identification box and ID, and track the target according to the user's click confirmation)
+  14806: "ComResponse", // Start sentinel UFO mode
+  14807: "ComResponse", // Stop Sentinel UFO Mode
+  14808: "ComResponse", // Wide-angle: "Multi-Object Tracking" starts tracking a specific target (firmware will return an identification box and ID, confirm tracking target based on user clicks)
 
   15000: "ComResponse", // Normal mode autofocus
   15001: "ComResponse", // Manual single-step focusing
@@ -318,11 +375,29 @@ export const notifyMapping = {
   15227: "ResNotifyCPUMode", // CPU mode
   15228: "ResNotifyStateAstroTrackingSpecial", // Sun and moon tracking status
   15229: "ResNotifyPowerOff", // Shutdown notification
-  15230: "ResNotifyNewMediaCreated", // New Media Created
-
+  15230: "ResNotifyAlbumUpdate", // New Media Created
+  15231: "ResNotifyStateSentryMode", // Sentinel mode status
+  15232: "ResNotifyTrackResult", // Sentinel mode tracking box result notification
+  15233: "ResNotifyOneClickGotoState", // One-click GOTO status
+  15234: "ResNotifyStreamType", // Image type notification
   15235: "ResNotifyRecordTime", // Wide Recording time
   15236: "ResNotifyOperationState", // Astronomical overlay wide shooting status
   15237: "ResNotifyProgressCaptureRawLiveStacking", // Astronomical overlay wide shooting progress
+  15238: "ResNotifyMultiTrackResult", // Multi-Object Tracking Result Notification
+  15239: "ResNotifyEqSolvingState", // EQ check status
+  15240: "ResNotifyStateSentryMode", // Sentinel-UFO Mode Status
+  15241: "ResNotifyLongExpPhotoProgress", // Telephoto long exposure progress
+  15242: "ResNotifyLongExpPhotoProgress", // Wide-angle long exposure progress
+  15243: "ResNotifyTemperature", // Movement temperature
+  //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244; //
+  //  CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245; //
+  //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246; //
+  15247: "ResNotifyOperationState", // Wide-angle dark field shooting state
+  15248: "ResNotifyShootingScheduleResultAndState", // Shooting plan results and status notifications
+  15249: "ResNotifyShootingTaskState", // Shooting task status notification
+  15250: "ResNotifySkySeacherState", // Sky detection status
+  //  CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
+  //  CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
 };
 
 export const notifyResponseMapping = {
@@ -368,6 +443,9 @@ export const notifyResponseMapping = {
   10039: "ComResponse", // Get the working status of the whole machine
   10040: "ComResponse", // Set jpg preview quality
 
+  10041: "ComResWithInt", // Shoot RAW image
+  10042: "ComResponse", // Set rtsp preview bit rate type
+
   11000: "ComResponse", // Start calibration
   11001: "ComResponse", // Stop calibration
   11002: "ComResponse", // Start GOTO Deep Space Object
@@ -382,8 +460,23 @@ export const notifyResponseMapping = {
   11011: "ComResponse", // Start tracking the sun and moon
   11012: "ComResponse", // Stop tracking the sun and moon
 
-  11016: "ComResponse", // Start wide stacking
-  11017: "ComResponse", // Stop wide overlay
+  11013: "ResOneClickGoto", // One-click GOTO deep space celestial body
+  11014: "ResOneClickGoto", // One-click GOTO solar system target
+  11015: "ComResponse", // Stop one-click GOTO
+  11016: "ComResponse", // Start wide-angle overlay
+  11017: "ComResponse", // Stop wide-angle overlay
+  11018: "ResStartEqSolving", // Start EQ verification
+  11019: "ComResponse", // Stop EQ verification
+  11020: "ComResponse", // Wide-angle GO LIVE interface
+
+  11021: "ComResponse", // Start shooting the dark field with specified parameters (manually set exposure, gain, binning).
+  11022: "ComResponse", // Stop shooting the dark field with specified parameters
+  11023: "ResGetDarkFrameInfoList", // Query the list of recorded dark scenes
+  11024: "ResDelDarkFrameList", // Delete the specified dark field list
+  11025: "ComResponse", // Start shooting wide-angle dark field with specified parameters (manually set exposure and gain. Binning is fixed to 1 internally, setting does not work).
+  11026: "ComResponse", // Stop shooting dark field with wide-angle specified parameters
+  11027: "ResGetWideDarkFrameInfoList", // Query the list of wide-angle dark scenes taken
+  11028: "ResDelWideDarkFrameList", // Delete the specified wide-angle dark field list
 
   12000: "ComResponse", // Turn on the camera
   12001: "ComResponse", // Turn off the camera
@@ -442,8 +535,18 @@ export const notifyResponseMapping = {
   14008: "ComResponse", // Stop joystick
   14009: "ComResponse", // Dual camera linkage
 
+  14010: "ResMotor", // Motor run in pulse
+  14011: "ResMotorPosition", // Motor get Position
+
   14800: "ComResponse", // Started tracking
   14801: "ComResponse", // Stop tracking
+  14802: "ComResponse", // Start Sentinel Mode (Pack
+  14803: "ComResponse", // Stop Sentinel Mode
+  14804: "ComResponse", // Start "Multi-Object Tracking" feature
+  14805: "ComResponse", // Telephoto: "Multi-Object Tracking" starts tracking a target (the firmware will return an identification box and ID, and track the target according to the user's click confirmation)
+  14806: "ComResponse", // Start sentinel UFO mode
+  14807: "ComResponse", // Stop Sentinel UFO Mode
+  14808: "ComResponse", // Wide-angle: "Multi-Object Tracking" starts tracking a specific target (firmware will return an identification box and ID, confirm tracking target based on user clicks)
 
   15000: "ComResponse", // Normal mode autofocus
   15001: "ComResponse", // Manual single-step focusing

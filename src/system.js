@@ -9,7 +9,7 @@ import { cmdMapping } from "./cmd_mapping.js";
 /*** ---------------- MODULE SYSTEM ---------------- ***/
 /*** ----------------------------------------------- ***/
 /**
- * 3.11.3 Set the system time
+ * 4.11.3 Set the system time
  * Create Encoded Packet for the command CMD_SYSTEM_SET_TIME
  * @returns {Uint8Array}
  */
@@ -21,8 +21,10 @@ export function messageSystemSetTime() {
   const cmdClass = cmdMapping[interface_id];
   let class_message = eval(`Dwarfii_Api.${cmdClass}`);
   // Encode message
+  const date = new Date();
   let message = class_message.create({
     timestamp: Math.floor(Date.now() / 1000),
+    timezone_offset: date.getTimezoneOffset() / 60,
   });
   console.log(
     `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
@@ -31,7 +33,7 @@ export function messageSystemSetTime() {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.11.4 Set the time zone
+ * 4.11.4 Set the time zone
  * Create Encoded Packet for the command CMD_SYSTEM_SET_TIME_ZONE
  * @param {string} timezone
  * @returns {Uint8Array}
@@ -52,7 +54,7 @@ export function messageSystemSetTimezone(timezone) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.11.5 Set MTP mode
+ * 4.11.5 Set MTP mode
  * Create Encoded Packet for the command CMD_SYSTEM_SET_MTP_MODE
  * @param {number} mode //Can be omitted, default is on, cannot be closed
  * @returns {Uint8Array}
@@ -73,7 +75,7 @@ export function messageSystemSetMtpMode(mode) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.11.6 Set CPU mode
+ * 4.11.6 Set CPU mode
  * Create Encoded Packet for the command CMD_SYSTEM_SET_CPU_MODE
  * @param {number} mode //0: Normal mode 1: Performance mode
  * @returns {Uint8Array}
@@ -94,20 +96,20 @@ export function messageSystemSetCpuMode(mode) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.11.7 Set HOST mode
- * Create Encoded Packet for the command CMD_SYSTEM_SET_HOSTSLAVE_MODE
- * @param {number} mode //0: HOST mode 1: SLAVE
+ * 4.11.7 Set HOST mode
+ * Create Encoded Packet for the command CMD_SYSTEM_SET_MASTERLOCK
+ * @param {boolean} lock //false: Master UnLock true: Master Lock
  * @returns {Uint8Array}
  */
-export function messageSystemSetHostSlaveMode(mode) {
+export function messageSystemSetMasterLock(lock) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_SYSTEM;
-  let interface_id = Dwarfii_Api.DwarfCMD.CMD_SYSTEM_SET_HOSTSLAVE_MODE;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_SYSTEM_SET_MASTERLOCK;
   let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
   // Obtain a message class
   const cmdClass = cmdMapping[interface_id];
   let class_message = eval(`Dwarfii_Api.${cmdClass}`);
   // Encode message
-  let message = class_message.create({ mode: mode });
+  let message = class_message.create({ lock: lock });
   console.log(
     `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
   );

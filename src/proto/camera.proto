@@ -6,6 +6,7 @@ import "base.proto";
 //打开摄像头
 message ReqOpenCamera {
     bool binning = 1;
+    int32 rtsp_encode_type = 2;
 }
 
 //关闭摄像头
@@ -27,6 +28,7 @@ message ReqStopBurstPhoto {
 
 //开始录像
 message ReqStartRecord {
+    int32 encode_type = 1;
 }
 
 //停止录像
@@ -229,3 +231,19 @@ message ReqSetJpgQuality {
 message ReqGetJpgQuality {
 }
 
+// 拍摄RAW图
+message ReqPhotoRaw {
+}
+
+// 设置rtsp 预览码率类型
+message ReqSetRtspBitRateType {
+    int32 bitrate_type = 1;
+}
+
+// 禁用isp处理
+message ReqDisableAllIspProcessing {
+}
+
+// 打开isp处理
+message ReqEnableAllIspProcessing {
+}

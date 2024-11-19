@@ -43,6 +43,15 @@ export const firmwareVersion = (IP) => `http://${IP}:8082/firmwareVersion`;
 export const getDefaultParamsConfig = (IP) =>
   `http://${IP}:8082/getDefaultParamsConfig`;
 
+/**
+ * POST Request
+ * data.deviceID 1:DWARF II 2:DWARF3
+ * data.deviceName 1:DWARF_XXXXXX  2:DWARF3_XXXXXX
+ * @param {string} IP
+ * @returns {string}
+ */
+export const deviceInfo = (IP) => `http://${IP}:8082/deviceInfo`;
+
 // ===============
 // ===============
 

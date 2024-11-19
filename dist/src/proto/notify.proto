@@ -27,6 +27,16 @@ enum AstroState {
     ASTRO_STATE_PLATE_SOLVING = 4; // Astronomy is Plating Solving
 }
 
+// 哨兵模式
+enum SentryModeState {
+    SENTRY_MODE_STATE_IDLE = 0;
+    SENTRY_MODE_STATE_INIT = 1;
+    SENTRY_MODE_STATE_DETECT = 2;
+    SENTRY_MODE_STATE_TRACK = 3;
+    SENTRY_MODE_STATE_TRACK_FINISH = 4;
+    SENTRY_MODE_STATE_STOPPING = 5;
+};
+
 // 长焦广角预览画面匹配结果
 message ResNotifyPictureMatching {
     uint32 x = 1;
@@ -42,6 +52,12 @@ message ResNotifySDcardInfo {
     uint32 available_size = 1;
     uint32 total_size = 2;
     int32 code = 3;
+}
+
+// 机芯温度
+message ResNotifyTemperature {
+    int32 code = 1;
+    int32 temperature = 2;
 }
 
 // 录像时间显示
@@ -131,6 +147,7 @@ message ResNotifyPowerIndState {
 // websocket主机从机模式状态
 message ResNotifyHostSlaveMode {
     int32 mode = 1;
+    bool lock = 2;
 }
 
 // mtp模式通知
@@ -162,6 +179,60 @@ message ResNotifyStateAstroTrackingSpecial {
 message ResNotifyPowerOff {
 }
 
-message ResNotifyNewMediaCreated {
+// 相册数据更新通知
+message ResNotifyAlbumUpdate {
     int32 media_type = 1;
+}
+
+// 哨兵模式状态
+message ResNotifyStateSentryMode {
+    SentryModeState state = 1;
+}
+
+// 一键GOTO状态
+message ResNotifyOneClickGotoState {
+    OperationState state = 1;  
+}
+
+// 图传类型通知
+message ResNotifyStreamType {
+    int32 stream_type = 1;
+    int32 cam_id = 2;
+}
+
+// EQ校验状态通知
+message ResNotifyEqSolvingState {
+    enum Action {
+        UNSPECIFIED = 0;
+        FOCUS = 1;  // 对焦步骤
+        SOLVING = 2;  // 解算步骤
+    }
+    Action step = 1;
+    OperationState state = 2;  
+}
+
+// 长曝光拍摄进度条通知
+message ResNotifyLongExpPhotoProgress {
+    uint32 function_id = 1;
+    double total_time = 2;
+    double exposured_time = 3;
+}
+
+// 拍摄计划结果和状态通知
+message ResNotifyShootingScheduleResultAndState {
+    string schedule_id = 1;
+    int32 result = 2;
+    int32 state = 3;
+}
+
+// 拍摄任务状态通知
+message ResNotifyShootingTaskState {
+    string schedule_task_id = 1;
+    int32 state = 2;
+    int32 code = 3;
+}
+
+// 天空检测状态通知
+message ResNotifySkySeacherState {
+    OperationState state = 1;
 }

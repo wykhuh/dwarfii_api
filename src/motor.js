@@ -9,7 +9,7 @@ import { cmdMapping } from "./cmd_mapping.js";
 /*** ---------------- MODULE_MOTOR ---------------- ***/
 /*** ---------------------------------------------- ***/
 /**
- * 3.13.3 Motor motion
+ * 4.13.3 Motor motion
  * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN
  * @param {number} id ; //1  : Rotation axis   2:   Pitch axis
  * @param {number} speed ; //5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
@@ -58,7 +58,7 @@ export function messageStepMotorMotion(
 }
 /**
  * Create Encoded Packet for the command CMD_STEP_MOTOR_STOP
- * 3.13.4 Motor stop
+ * 4.13.4 Motor stop
  * @param {number} id ; //0: Rotation axis 1: Pitch axis
  * @returns {Uint8Array}
  */
@@ -79,7 +79,7 @@ export function messageStepMotorStop(id) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.5 Joystick
+ * 4.13.5 Joystick
  * Create Encoded Packet for the command CMD_STEP_MOTOR_SERVICE_JOYSTICK
  * @param {number} vector_angle ; //The angle of the direction vector, indicating the direction of motion of the field of view, 0-360 degrees, 0 degrees starting from the positive x-axis and increasing counterclockwise
  * @param {number} vector_length ; //The length of the direction vector represents the scaling factor of the speed, 0-1, and the speed is finely adjusted according to the range of the joystick drag
@@ -112,7 +112,7 @@ export function messageStepMotorServiceJoystick(
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.6 Short press the arrow keys with the joystick
+ * 4.13.6 Short press the arrow keys with the joystick
  * Create Encoded Packet for the command CMD_STEP_MOTOR_SERVICE_JOYSTICK_FIXED_ANGLE
  * @param {number} vector_angle ; //The angle of the direction vector, indicating the direction of motion of the field of view, 0-360 degrees, 0 degrees starting from the positive x-axis and increasing counterclockwise
  * @param {number} vector_length ; //The length of the direction vector represents the scaling factor of the speed, 0-1, and the speed is finely adjusted according to the range of the joystick drag
@@ -145,7 +145,7 @@ export function messageStepMotorServiceJoystickFixedAngle(
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.7 Stop joystick
+ * 4.13.7 Stop joystick
  * Create Encoded Packet for the command CMD_STEP_MOTOR_SERVICE_JOYSTICK_STOP
  * @returns {Uint8Array}
  */
@@ -166,7 +166,7 @@ export function messageStepMotorServiceJoystickStop() {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.8 Dual camera linkage
+ * 4.13.8 Dual camera linkage
  * Create Encoded Packet for the command CMD_STEP_MOTOR_SERVICE_DUAL_CAMERA_LINKAGE
  * @param {number} x ;
  * @param {number} y ;
@@ -190,7 +190,7 @@ export function messageStepMotorServiceDualCameraLinkage(x, y) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.9 Motor Run To (Not Documented)
+ * 4.13.9 Motor Run To (Not Documented)
  * Create Encoded Packet for the command CMD_STEP_MOTOR_RUN_TO
  * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
  * @param {number} end_position ;
@@ -228,7 +228,7 @@ export function messageStepMotorMotionTo(
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.10 Motor Reset (Not Documented)
+ * 4.13.10 Motor Reset (Not Documented)
  * Create Encoded Packet for the command CMD_STEP_MOTOR_RESET
  * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
  * @param {boolean} direction; //2 : 0: left/down 1: right/up
@@ -254,7 +254,7 @@ export function messageStepMotorReset(id, direction) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.11 Motor Change Speed (Not Documented)
+ * 4.13.11 Motor Change Speed (Not Documented)
  * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_SPEED
  * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
  * @param {number} speed; //2 : 5 gears: 0.1, 1, 5, 10, 30 degrees/s, supports maximum speed of 32 degrees/s
@@ -280,7 +280,7 @@ export function messageStepMotorChangeSpeed(id, speed) {
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
- * 3.13.12 Motor Change direction (Not Documented)
+ * 4.13.12 Motor Change direction (Not Documented)
  * Create Encoded Packet for the command CMD_STEP_MOTOR_CHANGE_DIRECTION
  * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
  * @param {boolean} direction ; //0: left/down 1: right/up
@@ -298,6 +298,30 @@ export function messageStepMotorChangeDirection(id, direction) {
   let message = class_message.create({
     id: id,
     direction: direction,
+  });
+  console.log(
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+  );
+  // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+/**
+ * 4.13.14 Motor Get Position (Not Documented)
+ * Create Encoded Packet for the command CMD_STEP_MOTOR_GET_POSITION
+ * @param {number} id ; // 1  : Rotation axis   2:   Pitch axis
+ * @returns {Uint8Array}
+ */
+export function messageStepMotorGetPosition(id) {
+  let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
+  let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_GET_POSITION;
+  let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  // Obtain classname depending of the command
+  // Obtain a message class
+  const cmdClass = cmdMapping[interface_id];
+  let class_message = eval(`Dwarfii_Api.${cmdClass}`);
+  // Encode message
+  let message = class_message.create({
+    id: id,
   });
   console.log(
     `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
