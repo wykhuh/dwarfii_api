@@ -21,9 +21,12 @@ export function messageSystemSetTime() {
     let class_message = eval(`Dwarfii_Api.${cmdClass}`);
     // Encode message
     const date = new Date();
+    let timezoneOffset = date.getTimezoneOffset(); // Offset in minutes
+    // Convert to hours and round to the nearest 0.25
+    let roundedTimezoneOffset = Math.round((timezoneOffset / 60) * 4) / 4;
     let message = class_message.create({
         timestamp: Math.floor(Date.now() / 1000),
-        timezone_offset: date.getTimezoneOffset() / 60,
+        timezoneOffset: roundedTimezoneOffset,
     });
     console.log(`class Message = ${cmdClass} created message = ${JSON.stringify(message)}`);
     // return encoded Message Packet
