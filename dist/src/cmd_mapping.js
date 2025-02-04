@@ -356,7 +356,7 @@ export const notifyMapping = {
     15240: "ResNotifyStateSentryMode", // Sentinel-UFO Mode Status
     15241: "ResNotifyLongExpPhotoProgress", // Telephoto long exposure progress
     15242: "ResNotifyLongExpPhotoProgress", // Wide-angle long exposure progress
-    15243: "ResNotifyTemperature", // Movement temperature
+    15243: "ResNotifyTemperature", // Temperature
     //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244; //
     //  CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245; //
     //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246; //
@@ -366,6 +366,7 @@ export const notifyMapping = {
     15250: "ResNotifySkySeacherState", // Sky detection status
     //  CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
     //  CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
+    15257: "ResNotifyFocus", // Focus Position
 };
 export const notifyResponseMapping = {
     10000: "ComResponse", // Turn on the camera

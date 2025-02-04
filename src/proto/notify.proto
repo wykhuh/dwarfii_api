@@ -236,3 +236,7 @@ message ResNotifyShootingTaskState {
 message ResNotifySkySeacherState {
     OperationState state = 1;
 }
+
+message ResNotifyFocus {
+    int32 focus = 1;
+}

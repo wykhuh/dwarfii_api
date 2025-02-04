@@ -358,6 +358,7 @@ export const notifyMapping: {
     15248: string;
     15249: string;
     15250: string;
+    15257: string;
 };
 export const notifyResponseMapping: {
     10000: string;

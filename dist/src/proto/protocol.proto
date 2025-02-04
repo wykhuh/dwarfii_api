@@ -237,6 +237,8 @@ enum DwarfCMD {
     CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
     CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
 
+    CMD_NOTIFY_FOCUS = 15257; // Focus Position
+
     CMD_PANORAMA_START_GRID = 15500; // Start panorama
     CMD_PANORAMA_STOP = 15501; // Stop panorama
     CMD_PANORAMA_START_EULER_RANGE = 15502; // Start panorama Euler Range

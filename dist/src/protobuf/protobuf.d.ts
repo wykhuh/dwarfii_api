@@ -15416,6 +15416,96 @@ export class ResNotifySkySeacherState implements IResNotifySkySeacherState {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Represents a ResNotifyFocus. */
+export class ResNotifyFocus implements IResNotifyFocus {
+
+    /**
+     * Constructs a new ResNotifyFocus.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResNotifyFocus);
+
+    /** ResNotifyFocus focus. */
+    public focus: number;
+
+    /**
+     * Creates a new ResNotifyFocus instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResNotifyFocus instance
+     */
+    public static create(properties?: IResNotifyFocus): ResNotifyFocus;
+
+    /**
+     * Encodes the specified ResNotifyFocus message. Does not implicitly {@link ResNotifyFocus.verify|verify} messages.
+     * @param message ResNotifyFocus message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IResNotifyFocus, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResNotifyFocus message, length delimited. Does not implicitly {@link ResNotifyFocus.verify|verify} messages.
+     * @param message ResNotifyFocus message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IResNotifyFocus, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ResNotifyFocus message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResNotifyFocus
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ResNotifyFocus;
+
+    /**
+     * Decodes a ResNotifyFocus message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResNotifyFocus
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ResNotifyFocus;
+
+    /**
+     * Verifies a ResNotifyFocus message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ResNotifyFocus message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResNotifyFocus
+     */
+    public static fromObject(object: { [k: string]: any }): ResNotifyFocus;
+
+    /**
+     * Creates a plain object from a ResNotifyFocus message. Also converts values to other types if specified.
+     * @param message ResNotifyFocus
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ResNotifyFocus, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ResNotifyFocus to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResNotifyFocus
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** Represents a ReqStartPanoramaByGrid. */
 export class ReqStartPanoramaByGrid implements IReqStartPanoramaByGrid {
 
@@ -16530,6 +16620,7 @@ export enum DwarfCMD {
     CMD_NOTIFY_SKY_SEACHER_STATE = 15250,
     CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251,
     CMD_NOTIFY_WIDE_TRACK_RESULT = 15252,
+    CMD_NOTIFY_FOCUS = 15257,
     CMD_PANORAMA_START_GRID = 15500,
     CMD_PANORAMA_STOP = 15501,
     CMD_PANORAMA_START_EULER_RANGE = 15502

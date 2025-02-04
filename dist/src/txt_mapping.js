@@ -245,7 +245,7 @@ export const cmdTxtMapping = {
     15240: "Sentinel-UFO Mode Status",
     15241: "Telephoto long exposure progress",
     15242: "Wide-angle long exposure progress",
-    15243: "Movement temperature",
+    15243: "Temperature",
     15244: "Panorama upload compression progress",
     15245: "Panorama upload upload progress",
     15246: "Panorama upload complete",
@@ -255,6 +255,7 @@ export const cmdTxtMapping = {
     15250: "Sky detection status",
     15251: "Wide-angle multi-target box result notification",
     15252: "Wide-angle single target box result notification",
+    15257: "Focus Position",
     15500: "Start panorama",
     15501: "Stop panorama",
     15502: "ReqStartPanoramaByEulerRange", // Start panorama Euler Range
